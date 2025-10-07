@@ -44,7 +44,7 @@ export default function Home() {
             LAUNCHING SOON ON
           </span>
           <Image
-            src="/assets/Kickstarter_logo.png"
+            src="/Assets/Kickstarter_logo.png"
             alt="Kickstarter"
             width={92}
             height={11}
@@ -59,7 +59,7 @@ export default function Home() {
         {/* Background Image - Full Viewport */}
         <div className="absolute inset-0 w-full h-full">
           <Image
-            src="/assets/landingpage1assets/herosectiongif.png"
+            src="/Assets/landingpage1assets/herosectiongif.png"
             alt="ayon personal health coach background"
             fill
             className="object-cover"
@@ -74,7 +74,7 @@ export default function Home() {
             {/* AYON Logo */}
             <div className="mb-4">
               <Image
-                src="/assets/ayonlogopngwhite.png"
+                src="/Assets/ayonlogopngwhite.png"
                 alt="ayon"
                 width={272}
                 height={61}
@@ -111,7 +111,7 @@ export default function Home() {
           {/* Background Eclipse Group */}
           <div className="absolute inset-0 flex items-center justify-center">
             <Image
-              src="/assets/landingpage1assets/eclipsegroup.svg"
+              src="/Assets/landingpage1assets/eclipsegroup.svg"
               alt="eclipse background"
               width={683}
               height={350}
@@ -168,7 +168,7 @@ export default function Home() {
       {/* Image Section */}
       <div className="w-full">
         <Image
-          src="/assets/landingpage1assets/ayonimage1.jpg"
+          src="/Assets/landingpage1assets/ayonimage1.jpg"
           alt="ayon product image"
           width={1200}
           height={800}
@@ -182,7 +182,7 @@ export default function Home() {
           {/* Left Side: Eclipse Background with Headline */}
           <div className="relative flex items-center justify-center">
             <Image
-              src="/assets/landingpage1assets/eclipsegroup.svg"
+              src="/Assets/landingpage1assets/eclipsegroup.svg"
               alt="eclipse background"
               width={683}
               height={350}
@@ -257,7 +257,7 @@ export default function Home() {
       {/* GIF Section */}
       <div className="w-full">
         <Image
-          src="/assets/landingpage1assets/sectiongif2.jpg"
+          src="/Assets/landingpage1assets/sectiongif2.jpg"
           alt="ayon product demonstration"
           width={1200}
           height={800}
@@ -322,7 +322,7 @@ export default function Home() {
           {/* Right Side: Eclipse Background with Headline */}
           <div className="relative flex items-center justify-center">
             <Image
-              src="/assets/landingpage1assets/eclipsegroup.svg"
+              src="/Assets/landingpage1assets/eclipsegroup.svg"
               alt="eclipse background"
               width={683}
               height={350}
@@ -346,7 +346,7 @@ export default function Home() {
       {/* GIF Section 3 */}
       <div className="w-full relative">
         <Image
-          src="/assets/landingpage1assets/sectiongif3.jpg"
+          src="/Assets/landingpage1assets/sectiongif3.jpg"
           alt="ayon product demonstration"
           width={1200}
           height={800}
@@ -438,7 +438,7 @@ export default function Home() {
             
             <div className="mb-4">
               <Image
-                src="/assets/landingpage1assets/whipsawlogo.svg"
+                src="/Assets/landingpage1assets/whipsawlogo.svg"
                 alt="Whipsaw logo"
                 width={340}
                 height={80}
@@ -641,7 +641,7 @@ export default function Home() {
       {/* Last Section Image */}
       <div className="w-full">
         <Image
-          src="/assets/landingpage1assets/lastsectionimg.jpg"
+          src="/Assets/landingpage1assets/lastsectionimg.jpg"
           alt="ayon final section"
           width={1200}
           height={800}
@@ -655,7 +655,7 @@ export default function Home() {
           {/* AYON Logo */}
           <div className="mb-6">
             <Image
-              src="/assets/ayonlogopngwhite.png"
+              src="/Assets/ayonlogopngwhite.png"
               alt="ayon"
               width={135}
               height={30}
