@@ -292,7 +292,7 @@ export default function Home() {
       {/* Image Section */}
       <div className="w-full">
         <Image
-          src="/Assets/landingpage1assets/ayonimage1.jpg"
+          src="/Assets/landingpage1assets/ayonimage1.png"
           alt="ayon product image"
           width={1200}
           height={800}
@@ -883,7 +883,7 @@ export default function Home() {
         viewport={{ once: true, amount: 0.3 }}
       >
         <Image
-          src="/Assets/landingpage1assets/lastsectionimg.jpg"
+          src="/Assets/landingpage1assets/lastsectionimg.png"
           alt="ayon final section"
           width={1200}
           height={800}
