@@ -5,37 +5,37 @@ import "./globals.css";
 const aeonik = localFont({
   src: [
     {
-      path: "../public/assets/Aeonik-Full-Family-Desktop/Aeonik-Thin.otf",
+      path: "../public/Assets/Aeonik-Full-Family-Desktop/Aeonik-Thin.otf",
       weight: "100",
       style: "normal",
     },
     {
-      path: "../public/assets/Aeonik-Full-Family-Desktop/Aeonik-Light.otf",
+      path: "../public/Assets/Aeonik-Full-Family-Desktop/Aeonik-Light.otf",
       weight: "300",
       style: "normal",
     },
     {
-      path: "../public/assets/Aeonik-Full-Family-Desktop/Aeonik-Regular.otf",
+      path: "../public/Assets/Aeonik-Full-Family-Desktop/Aeonik-Regular.otf",
       weight: "400",
       style: "normal",
     },
     {
-      path: "../public/assets/Aeonik-Full-Family-Desktop/Aeonik-Medium.otf",
+      path: "../public/Assets/Aeonik-Full-Family-Desktop/Aeonik-Medium.otf",
       weight: "500",
       style: "normal",
     },
     {
-      path: "../public/assets/Aeonik-Full-Family-Desktop/Aeonik-SemiBold.otf",
+      path: "../public/Assets/Aeonik-Full-Family-Desktop/Aeonik-SemiBold.otf",
       weight: "600",
       style: "normal",
     },
     {
-      path: "../public/assets/Aeonik-Full-Family-Desktop/Aeonik-Bold.otf",
+      path: "../public/Assets/Aeonik-Full-Family-Desktop/Aeonik-Bold.otf",
       weight: "700",
       style: "normal",
     },
     {
-      path: "../public/assets/Aeonik-Full-Family-Desktop/Aeonik-Black.otf",
+      path: "../public/Assets/Aeonik-Full-Family-Desktop/Aeonik-Black.otf",
       weight: "900",
       style: "normal",
     },
@@ -46,17 +46,17 @@ const aeonik = localFont({
 const aeonikMono = localFont({
   src: [
     {
-      path: "../public/assets/AeonikMono-Essentials-Desktop/AeonikMono-Light.otf",
+      path: "../public/Assets/AeonikMono-Essentials-Desktop/AeonikMono-Light.otf",
       weight: "300",
       style: "normal",
     },
     {
-      path: "../public/assets/AeonikMono-Essentials-Desktop/AeonikMono-Regular.otf",
+      path: "../public/Assets/AeonikMono-Essentials-Desktop/AeonikMono-Regular.otf",
       weight: "400",
       style: "normal",
     },
     {
-      path: "../public/assets/AeonikMono-Essentials-Desktop/AeonikMono-Bold.otf",
+      path: "../public/Assets/AeonikMono-Essentials-Desktop/AeonikMono-Bold.otf",
       weight: "700",
       style: "normal",
     },
