@@ -36,26 +36,26 @@ export default function Home() {
     return () => clearInterval(timer);
   }, []);
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen" style={{ backgroundColor: '#211F1F' }}>
       {/* Top Banner */}
-      <div className="w-full py-3" style={{ backgroundColor: '#211F1F' }}>
-        <div className="flex items-center justify-center gap-2">
-          <span className="text-sm font-medium tracking-wide uppercase" style={{ color: '#F78D1E', fontFamily: 'var(--font-aeonik-mono)' }}>
+      <div className="w-full py-3 md:py-3 h-[50px] md:h-auto" style={{ backgroundColor: '#211F1F' }}>
+        <div className="flex items-center justify-center gap-2 h-full">
+          <span className="text-sm font-medium tracking-wide uppercase" style={{ color: '#F78D1E', fontFamily: 'var(--font-aeonik-mono)', fontSize: '15px' }}>
             LAUNCHING SOON ON
           </span>
           <Image
             src="/Assets/Kickstarter_logo.png"
             alt="Kickstarter"
-            width={92}
-            height={11}
-            style={{ height: '11px', width: '92px' }}
+            width={90}
+            height={11.5}
+            className="h-[11.5px] w-[90px] md:h-[11px] md:w-[92px]"
             unoptimized
           />
         </div>
       </div>
 
       {/* Hero Section */}
-      <div className="relative w-full" style={{ height: '769px' }}>
+      <div className="relative w-full h-[520px] md:h-[769px]">
         {/* Background Image - Full Viewport */}
         <div className="absolute inset-0 w-full h-full">
           <Image
@@ -70,24 +70,24 @@ export default function Home() {
         {/* Hero Content Overlay */}
         <div className="relative z-10 w-full h-full">
           {/* Centered Logo and Subtitle Group */}
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center text-center">
+          <div className="absolute left-1/2 transform -translate-x-1/2 flex flex-col items-center text-center top-[70px] md:top-1/2 md:-translate-y-1/2">
             {/* AYON Logo */}
             <div className="mb-4">
               <Image
                 src="/Assets/ayonlogopngwhite.png"
                 alt="ayon"
-                width={272}
-                height={61}
-                className="object-contain"
+                width={162}
+                height={36}
+                className="object-contain md:w-[272px] md:h-[61px]"
               />
             </div>
 
             {/* Subtitle */}
-            <p className="text-white font-bold tracking-wide" style={{ fontSize: '40px', width: '437px', height: '42px', lineHeight: '42px' }}>personal health coach</p>
+            <p className="text-white font-bold tracking-wide text-[30px] leading-[30px] md:text-[40px] md:leading-[42px] md:w-[437px] md:h-[42px]">personal health<br className="md:hidden" />coach</p>
           </div>
 
-          {/* CTA Button - Positioned below with 182px gap */}
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2" style={{ marginTop: '182px' }}>
+          {/* CTA Button - Positioned 40px from bottom on mobile, centered on desktop */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 bottom-[40px] md:top-1/2 md:mt-[182px]">
             <button 
               className="bg-white text-black font-medium uppercase tracking-wider hover:bg-gray-100 transition-colors border border-black"
               style={{ 
@@ -106,7 +106,7 @@ export default function Home() {
       </div>
 
       {/* New Section */}
-      <div className="w-full bg-white flex items-center justify-center py-16">
+      <div className="w-full bg-white flex items-center justify-center" style={{ paddingTop: '72px', paddingBottom: '72px' }}>
         <div className="w-[680px] h-[350px] flex items-center justify-center relative">
           {/* Background Eclipse Group */}
           <div className="absolute inset-0 flex items-center justify-center">
@@ -137,14 +137,13 @@ export default function Home() {
       </div>
 
       {/* Stats Section */}
-      <div className="w-full h-[216px] flex items-center justify-center" style={{ backgroundColor: '#211F1F' }}>
+      <div className="w-full flex items-center justify-center md:px-0" style={{ backgroundColor: '#211F1F', paddingTop: '43px', paddingBottom: '43px', paddingLeft: '60px', paddingRight: '60px' }}>
         <div className="text-center">
           {/* 86% Stat */}
           <div 
-            className="font-bold mb-2"
+            className="font-bold mb-2 text-[40px] md:text-[60px]"
             style={{
               fontFamily: 'var(--font-aeonik)',
-              fontSize: '60px',
               color: '#F78D1E'
             }}
           >
@@ -153,10 +152,9 @@ export default function Home() {
           
           {/* Subtitle */}
           <div 
-            className="font-medium"
+            className="font-medium text-[18px] md:text-[22px]"
             style={{
               fontFamily: 'var(--font-aeonik-mono)',
-              fontSize: '22px',
               color: '#F78D1E'
             }}
           >
@@ -177,32 +175,10 @@ export default function Home() {
       </div>
 
       {/* Features Section */}
-      <div className="w-full bg-white py-16 px-[120px]">
-        <div className="max-w-6xl mx-auto grid grid-cols-2 gap-[100px] h-[350px]">
-          {/* Left Side: Eclipse Background with Headline */}
-          <div className="relative flex items-center justify-center">
-            <Image
-              src="/Assets/landingpage1assets/eclipsegroup.svg"
-              alt="eclipse background"
-              width={683}
-              height={350}
-              className="absolute opacity-100 object-contain"
-            />
-            <h2
-              className="relative z-10 text-center font-bold"
-              style={{
-                fontFamily: 'var(--font-aeonik)',
-                fontSize: '48px',
-                color: '#211F1F',
-                lineHeight: '1.2'
-              }}
-            >
-              It's time<br />to get fit!
-            </h2>
-          </div>
-
-          {/* Right Side: Description and Features List */}
-          <div className="flex flex-col justify-center">
+      <div className="w-full bg-white px-5 md:px-[120px]" style={{ paddingTop: '72px', paddingBottom: '100px' }}>
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-[100px] min-h-[350px]">
+          {/* Mobile: Text First, Desktop: Left Side Eclipse */}
+          <div className="flex flex-col justify-center order-1 md:order-1">
             <p
               className="mb-6"
               style={{
@@ -251,6 +227,27 @@ export default function Home() {
               </div>
             </div>
           </div>
+
+          {/* Mobile: Eclipse Second, Desktop: Right Side Eclipse */}
+          <div className="relative flex items-center justify-center order-2 md:order-2">
+            <Image
+              src="/Assets/landingpage1assets/eclipsegroup.svg"
+              alt="eclipse background"
+              width={683}
+              height={350}
+              className="absolute opacity-100 object-contain w-[683px] h-[350px]"
+            />
+            <h2
+              className="relative z-10 text-center font-bold text-[35px] md:text-[48px]"
+              style={{
+                fontFamily: 'var(--font-aeonik)',
+                color: '#211F1F',
+                lineHeight: '1.2'
+              }}
+            >
+              It's time<br />to get fit!
+            </h2>
+          </div>
         </div>
       </div>
 
@@ -260,16 +257,16 @@ export default function Home() {
           src="/Assets/landingpage1assets/sectiongif2.jpg"
           alt="ayon product demonstration"
           width={1200}
-          height={800}
-          className="w-full h-auto object-cover"
+          height={340}
+          className="w-full h-[340px] md:h-[800px] object-cover"
         />
       </div>
 
       {/* Inner Calm Section - Reversed Layout */}
-      <div className="w-full bg-white py-16 px-[120px]">
-        <div className="max-w-6xl mx-auto grid grid-cols-2 gap-[100px] h-[350px]">
-          {/* Left Side: Description and Features List */}
-          <div className="flex flex-col justify-center">
+      <div className="w-full bg-white px-5 md:px-[120px]" style={{ paddingTop: '72px', paddingBottom: '100px' }}>
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-[100px] min-h-[350px]">
+          {/* Mobile: Text First, Desktop: Left Side Description */}
+          <div className="flex flex-col justify-center order-1 md:order-1">
             <p
               className="mb-6"
               style={{
@@ -319,20 +316,19 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Right Side: Eclipse Background with Headline */}
-          <div className="relative flex items-center justify-center">
+          {/* Mobile: Eclipse Second, Desktop: Right Side Eclipse */}
+          <div className="relative flex items-center justify-center order-2 md:order-2">
             <Image
               src="/Assets/landingpage1assets/eclipsegroup.svg"
               alt="eclipse background"
               width={683}
               height={350}
-              className="absolute opacity-100 object-contain"
+              className="absolute opacity-100 object-contain w-[683px] h-[350px]"
             />
             <h2
-              className="relative z-10 text-center font-bold"
+              className="relative z-10 text-center font-bold text-[40px] md:text-[48px]"
               style={{
                 fontFamily: 'var(--font-aeonik)',
-                fontSize: '48px',
                 color: '#211F1F',
                 lineHeight: '1.2'
               }}
@@ -354,12 +350,11 @@ export default function Home() {
         />
         {/* Text Overlay */}
         <div className="absolute inset-0 flex items-center">
-          <div className="pl-[120px]">
+          <div className="pl-5 md:pl-[120px]">
             <h2
-              className="font-bold"
+              className="font-bold text-[40px] md:text-[60px]"
               style={{
                 fontFamily: 'var(--font-aeonik)',
-                fontSize: '60px',
                 color: 'white'
               }}
             >
@@ -370,10 +365,10 @@ export default function Home() {
       </div>
 
       {/* Collaboration Section */}
-      <div className="w-full bg-white py-16 px-[120px]">
-        <div className="max-w-6xl mx-auto grid grid-cols-2 gap-[100px] h-[350px]">
-          {/* Left Side: Description and Features List */}
-          <div className="flex flex-col justify-center">
+      <div className="w-full bg-white px-5 md:px-[120px]" style={{ paddingTop: '72px', paddingBottom: '100px' }}>
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-[100px] min-h-[350px]">
+          {/* Mobile: Text First, Desktop: Left Side Description */}
+          <div className="flex flex-col justify-center order-1 md:order-1">
             <p
               className="mb-6"
               style={{
@@ -423,8 +418,8 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Right Side: Collaboration Content */}
-          <div className="flex flex-col justify-center items-center text-center">
+          {/* Mobile: Collaboration Second, Desktop: Right Side Collaboration */}
+          <div className="flex flex-col justify-center items-center text-center order-2 md:order-2">
             <p
               className="mb-4 font-bold"
               style={{
@@ -462,12 +457,14 @@ export default function Home() {
 
       {/* Gradient and Black Section */}
       <div className="w-full">
-        <div className="grid grid-cols-2 h-[400px]">
-          {/* Left Side: Gradient Background */}
+        <div className="grid grid-cols-1 md:grid-cols-2 min-h-[400px]">
+          {/* Mobile: Countdown First, Desktop: Left Side Gradient */}
           <div 
-            className="flex flex-col items-center justify-center"
+            className="flex flex-col items-center justify-center order-1 md:order-1 px-5 md:px-0"
             style={{
-              background: 'linear-gradient(90deg, #EEE2AD 0%, #F69678 100%)'
+              background: 'linear-gradient(90deg, #EEE2AD 0%, #F69678 100%)',
+              paddingTop: '72px',
+              paddingBottom: '72px'
             }}
           >
             {/* Launch Text */}
@@ -574,8 +571,8 @@ export default function Home() {
             </div>
           </div>
           
-          {/* Right Side: Black Background */}
-          <div className="bg-black flex flex-col items-center justify-center">
+          {/* Mobile: Email Second, Desktop: Right Side Black */}
+          <div className="flex flex-col items-center justify-center order-2 md:order-2 px-5 md:px-0" style={{ backgroundColor: '#211F1F', paddingTop: '72px', paddingBottom: '72px' }}>
             <div 
               className="text-center mb-8"
               style={{
@@ -611,8 +608,9 @@ export default function Home() {
               <input
                 type="email"
                 placeholder="Your e-mail"
-                className="flex-1 px-4 py-3 bg-black text-white border-2 rounded-full focus:outline-none"
+                className="flex-1 px-4 py-3 text-white border-2 rounded-full focus:outline-none"
                 style={{
+                  backgroundColor: '#211F1F',
                   fontFamily: 'var(--font-aeonik)',
                   fontSize: '18px',
                   borderColor: '#F78D1E',
