@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+// Force Vercel deployment
+
 export async function POST(request: NextRequest) {
   try {
     const { email, listId } = await request.json();
