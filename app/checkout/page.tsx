@@ -19,7 +19,9 @@ function CheckoutForm() {
   const [canMakePayment, setCanMakePayment] = useState(false);
 
   useEffect(() => {
+    console.log('Stripe object:', stripe);
     if (stripe) {
+      console.log('Creating payment request...');
       const pr = stripe.paymentRequest({
         country: 'US',
         currency: 'usd',
@@ -31,13 +33,21 @@ function CheckoutForm() {
         requestPayerEmail: true,
         disableWallets: ['link'], // Disable Link payment method
       });
+      console.log('Payment request created:', pr);
 
       // Check if the Payment Request is available
       pr.canMakePayment().then((result) => {
+        console.log('Payment Request canMakePayment result:', result);
+        console.log('Available payment methods:', result);
         if (result) {
+          console.log('Apple Pay/Google Pay is available!');
           setCanMakePayment(true);
           setPaymentRequest(pr);
+        } else {
+          console.log('Apple Pay/Google Pay is NOT available on this device');
         }
+      }).catch((error) => {
+        console.error('Error checking payment availability:', error);
       });
 
       pr.on('paymentmethod', async (ev) => {
