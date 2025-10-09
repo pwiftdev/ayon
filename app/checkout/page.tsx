@@ -5,11 +5,18 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements, CardNumberElement, CardExpiryElement, CardCvcElement, useStripe, useElements, PaymentRequestButtonElement } from "@stripe/react-stripe-js";
 import { motion } from "framer-motion";
 
-// Initialize Stripe
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
+// Initialize Stripe with error handling
+const stripePublishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
 
 // Debug: Log the publishable key (remove this after debugging)
-console.log('Stripe publishable key:', process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY ? 'Present' : 'Missing');
+console.log('Stripe publishable key:', stripePublishableKey ? 'Present' : 'Missing');
+console.log('Full key:', stripePublishableKey);
+
+if (!stripePublishableKey) {
+  console.error('NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY is not set!');
+}
+
+const stripePromise = stripePublishableKey ? loadStripe(stripePublishableKey) : null;
 
 // Inner component that has access to Stripe hooks
 function CheckoutForm() {
@@ -424,9 +431,18 @@ export default function Checkout() {
           </motion.div>
 
           {/* Wrap everything in Elements provider */}
-          <Elements stripe={stripePromise}>
-            <CheckoutForm />
-          </Elements>
+          {stripePromise ? (
+            <Elements stripe={stripePromise}>
+              <CheckoutForm />
+            </Elements>
+          ) : (
+            <div className="bg-white rounded-2xl p-8 shadow-lg text-center">
+              <h2 className="text-red-600 font-bold mb-4">Payment System Error</h2>
+              <p className="text-gray-600">
+                Stripe is not properly configured. Please check the environment variables.
+              </p>
+            </div>
+          )}
         </motion.div>
       </div>
     </div>
