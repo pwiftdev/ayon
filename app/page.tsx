@@ -13,6 +13,9 @@ export default function Home() {
   });
 
   const [animatedPercentage, setAnimatedPercentage] = useState(0);
+  const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState("");
 
   // Animation variants
   const fadeInUp = {
@@ -93,6 +96,56 @@ export default function Home() {
     return () => clearTimeout(timer);
   }, []);
 
+  const handleEmailSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!email || !email.includes('@')) {
+      setSubmitMessage('Please enter a valid email address');
+      return;
+    }
+
+    const listId = process.env.NEXT_PUBLIC_KLAVIYO_MAIN_LIST_ID;
+    console.log('List ID:', listId);
+
+    if (!listId) {
+      console.error('NEXT_PUBLIC_KLAVIYO_MAIN_LIST_ID is not defined');
+      setSubmitMessage('Configuration error. Please contact support.');
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitMessage('');
+
+    try {
+      const response = await fetch('/api/klaviyo/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email,
+          listId: listId,
+        }),
+      });
+
+      const data = await response.json();
+      console.log('API response:', data);
+
+      if (response.ok) {
+        // Redirect to thank you page
+        window.location.href = '/thankyou';
+      } else {
+        console.error('API error:', data);
+        setSubmitMessage('Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      console.error('Fetch error:', error);
+      setSubmitMessage('Something went wrong. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#211F1F' }}>
       {/* Top Banner */}
@@ -169,6 +222,9 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
           >
             <button 
+              onClick={() => {
+                document.getElementById('email-signup')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              }}
               className="bg-white text-black font-medium uppercase tracking-wider transition-all duration-300 border border-black hover:scale-105"
               style={{ 
                 width: '269px', 
@@ -827,49 +883,78 @@ export default function Home() {
             </motion.div>
             
             {/* Email Input and Button */}
-            <motion.div 
-              className="relative flex w-full max-w-md items-center"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
-              viewport={{ once: true, amount: 0.3 }}
-            >
-              {/* Email Input Field */}
-              <input
-                type="email"
-                placeholder="Your e-mail"
-                className="flex-1 px-4 py-3 text-white border-2 rounded-full focus:outline-none"
-                style={{
-                  backgroundColor: '#211F1F',
-                  fontFamily: 'var(--font-aeonik)',
-                  fontSize: '18px',
-                  borderColor: '#F78D1E',
-                  color: '#F78D1E'
-                }}
-              />
-              
-              {/* GET NOTIFIED Button - Round and Overlapping */}
-              <button
-                className="absolute right-0 top-0 bottom-0 px-4 rounded-full font-bold uppercase tracking-wider transition-all duration-300 whitespace-nowrap hover:scale-105"
-                style={{
-                  fontFamily: 'var(--font-aeonik)',
-                  fontSize: '12px',
-                  fontWeight: '700',
-                  backgroundColor: '#F78D1E',
-                  color: 'black',
-                  boxShadow: '0 0 0 0 rgba(246, 152, 121, 0.4), 0 0 0 0 rgba(238, 228, 172, 0.4)',
-                  transition: 'all 0.3s ease, box-shadow 0.3s ease'
-                }}
-                onMouseEnter={(e) => {
-                  (e.target as HTMLElement).style.boxShadow = '0 0 15px 6px rgba(246, 152, 121, 0.3), 0 0 30px 12px rgba(238, 228, 172, 0.2)';
-                }}
-                onMouseLeave={(e) => {
-                  (e.target as HTMLElement).style.boxShadow = '0 0 0 0 rgba(246, 152, 121, 0.4), 0 0 0 0 rgba(238, 228, 172, 0.4)';
-                }}
+            <form onSubmit={handleEmailSubmit} style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+              <motion.div 
+                id="email-signup"
+                className="relative flex items-center"
+                style={{ width: '450px', maxWidth: '450px' }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+                viewport={{ once: true, amount: 0.3 }}
               >
-                GET NOTIFIED
-              </button>
-            </motion.div>
+                {/* Email Input Field */}
+                <input
+                  type="email"
+                  placeholder="Your e-mail"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  disabled={isSubmitting}
+                  className="flex-1 px-4 py-3 text-white border-2 rounded-full focus:outline-none"
+                  style={{
+                    backgroundColor: '#211F1F',
+                    fontFamily: 'var(--font-aeonik)',
+                    fontSize: '18px',
+                    borderColor: '#F78D1E',
+                    color: '#F78D1E'
+                  }}
+                />
+                
+                {/* GET NOTIFIED Button - Round and Overlapping */}
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="absolute right-0 top-0 bottom-0 px-4 rounded-full font-bold uppercase tracking-wider transition-all duration-300 whitespace-nowrap hover:scale-105"
+                  style={{
+                    fontFamily: 'var(--font-aeonik)',
+                    fontSize: '12px',
+                    fontWeight: '700',
+                    backgroundColor: '#F78D1E',
+                    color: 'black',
+                    boxShadow: '0 0 0 0 rgba(246, 152, 121, 0.4), 0 0 0 0 rgba(238, 228, 172, 0.4)',
+                    transition: 'all 0.3s ease, box-shadow 0.3s ease',
+                    opacity: isSubmitting ? 0.7 : 1
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!isSubmitting) {
+                      (e.target as HTMLElement).style.boxShadow = '0 0 15px 6px rgba(246, 152, 121, 0.3), 0 0 30px 12px rgba(238, 228, 172, 0.2)';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.target as HTMLElement).style.boxShadow = '0 0 0 0 rgba(246, 152, 121, 0.4), 0 0 0 0 rgba(238, 228, 172, 0.4)';
+                  }}
+                >
+                  {isSubmitting ? 'SENDING...' : 'GET NOTIFIED'}
+                </button>
+              </motion.div>
+            </form>
+            
+            {/* Success/Error Message - Below the form */}
+            {submitMessage && (
+              <motion.p
+                className="text-center mt-4"
+                style={{
+                  fontFamily: 'var(--font-aeonik)',
+                  fontSize: '14px',
+                  color: submitMessage.includes('Thank you') ? '#4CAF50' : '#F78D1E'
+                }}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                {submitMessage}
+              </motion.p>
+            )}
           </motion.div>
         </div>
       </motion.div>
