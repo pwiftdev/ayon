@@ -20,6 +20,9 @@ function CheckoutForm() {
 
   useEffect(() => {
     console.log('Stripe object:', stripe);
+    console.log('User Agent:', navigator.userAgent);
+    console.log('Is HTTPS:', window.location.protocol === 'https:');
+    
     if (stripe) {
       console.log('Creating payment request...');
       const pr = stripe.paymentRequest({
@@ -90,7 +93,7 @@ function CheckoutForm() {
           } else {
             ev.complete('success');
             // Redirect to success page
-            window.location.href = "/thankyou";
+            window.location.href = "/success";
           }
         } catch (err) {
           ev.complete('fail');
@@ -161,7 +164,7 @@ function CheckoutForm() {
         setError(error.message || "Payment failed");
       } else if (paymentIntent.status === "succeeded") {
         // Redirect to success page
-        window.location.href = "/thankyou";
+        window.location.href = "/success";
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : "An error occurred");
