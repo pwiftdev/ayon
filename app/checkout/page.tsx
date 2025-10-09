@@ -40,35 +40,50 @@ function CheckoutForm() {
       });
 
       pr.on('paymentmethod', async (ev) => {
-        // Create payment intent
-        const response = await fetch("/api/create-payment-intent", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            amount: 2000,
-            currency: "usd",
-            email: email,
-          }),
-        });
+        try {
+          // Create payment intent
+          const response = await fetch("/api/create-payment-intent", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              amount: 2000,
+              currency: "usd",
+              email: email,
+            }),
+          });
 
-        const { clientSecret } = await response.json();
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
 
-        // Confirm the PaymentIntent
-        const { error: confirmError } = await stripe.confirmCardPayment(
-          clientSecret,
-          { payment_method: ev.paymentMethod.id },
-          { handleActions: false }
-        );
+          const data = await response.json();
+          
+          if (!data.clientSecret) {
+            throw new Error('No client secret returned from server');
+          }
 
-        if (confirmError) {
+          const { clientSecret } = data;
+
+          // Confirm the PaymentIntent
+          const { error: confirmError } = await stripe.confirmCardPayment(
+            clientSecret,
+            { payment_method: ev.paymentMethod.id },
+            { handleActions: false }
+          );
+
+          if (confirmError) {
+            ev.complete('fail');
+            setError(confirmError.message || "Payment failed");
+          } else {
+            ev.complete('success');
+            // Redirect to success page
+            window.location.href = "/thankyou";
+          }
+        } catch (err) {
           ev.complete('fail');
-          setError(confirmError.message || "Payment failed");
-        } else {
-          ev.complete('success');
-          // Redirect to success page
-          window.location.href = "/thankyou";
+          setError(err instanceof Error ? err.message : "An error occurred");
         }
       });
     }
@@ -108,7 +123,18 @@ function CheckoutForm() {
         }),
       });
 
-      const { clientSecret } = await response.json();
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log('Payment intent response:', data);
+      
+      if (!data.clientSecret) {
+        throw new Error('No client secret returned from server');
+      }
+
+      const { clientSecret } = data;
 
       // Confirm payment
       const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
