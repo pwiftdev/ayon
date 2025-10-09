@@ -5,18 +5,8 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements, CardNumberElement, CardExpiryElement, CardCvcElement, useStripe, useElements, PaymentRequestButtonElement } from "@stripe/react-stripe-js";
 import { motion } from "framer-motion";
 
-// Initialize Stripe with error handling
-const stripePublishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
-
-// Debug: Log the publishable key (remove this after debugging)
-console.log('Stripe publishable key:', stripePublishableKey ? 'Present' : 'Missing');
-console.log('Full key:', stripePublishableKey);
-
-if (!stripePublishableKey) {
-  console.error('NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY is not set!');
-}
-
-const stripePromise = stripePublishableKey ? loadStripe(stripePublishableKey) : null;
+// Initialize Stripe
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
 // Inner component that has access to Stripe hooks
 function CheckoutForm() {
@@ -29,9 +19,6 @@ function CheckoutForm() {
   const [canMakePayment, setCanMakePayment] = useState(false);
 
   useEffect(() => {
-    console.log('Stripe object:', stripe);
-    console.log('Elements object:', elements);
-    
     if (stripe) {
       const pr = stripe.paymentRequest({
         country: 'US',
@@ -46,7 +33,6 @@ function CheckoutForm() {
 
       // Check if the Payment Request is available
       pr.canMakePayment().then((result) => {
-        console.log('Payment Request result:', result);
         if (result) {
           setCanMakePayment(true);
           setPaymentRequest(pr);
@@ -431,18 +417,9 @@ export default function Checkout() {
           </motion.div>
 
           {/* Wrap everything in Elements provider */}
-          {stripePromise ? (
-            <Elements stripe={stripePromise}>
-              <CheckoutForm />
-            </Elements>
-          ) : (
-            <div className="bg-white rounded-2xl p-8 shadow-lg text-center">
-              <h2 className="text-red-600 font-bold mb-4">Payment System Error</h2>
-              <p className="text-gray-600">
-                Stripe is not properly configured. Please check the environment variables.
-              </p>
-            </div>
-          )}
+          <Elements stripe={stripePromise}>
+            <CheckoutForm />
+          </Elements>
         </motion.div>
       </div>
     </div>
