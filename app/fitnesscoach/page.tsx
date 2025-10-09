@@ -723,20 +723,76 @@ export default function FitnessCoach() {
 
       {/* Footer */}
       <motion.div 
-        className="w-full bg-black" 
-        style={{ paddingTop: '100px', paddingBottom: '100px' }}
+        className="w-full" 
+        style={{ 
+          backgroundColor: '#211F1F',
+          paddingTop: '50px', 
+          paddingBottom: '50px' 
+        }}
         initial={{ opacity: 0, y: 60 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
         viewport={{ once: true, amount: 0.3 }}
       >
         <div className="flex flex-col items-center justify-center">
+          {/* Support Contact Section */}
+          <motion.div 
+            className="mb-12 text-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            <motion.p
+              className="text-white mb-4 font-bold"
+              style={{
+                fontFamily: 'var(--font-aeonik)',
+                fontSize: '25px'
+              }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+              viewport={{ once: true, amount: 0.3 }}
+            >
+              Support contact
+            </motion.p>
+            
+            <motion.p
+              className="text-white mb-2"
+              style={{
+                fontFamily: 'var(--font-aeonik)',
+                fontSize: '18px'
+              }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+              viewport={{ once: true, amount: 0.3 }}
+            >
+              hello@ayon.fit
+            </motion.p>
+            
+            <motion.a
+              href="#"
+              className="text-white underline"
+              style={{
+                fontFamily: 'var(--font-aeonik)',
+                fontSize: '18px'
+              }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
+              viewport={{ once: true, amount: 0.3 }}
+            >
+              Terms and conditions
+            </motion.a>
+          </motion.div>
+
           {/* AYON Logo */}
           <motion.div 
             className="mb-6"
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+            transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
             viewport={{ once: true, amount: 0.3 }}
           >
             <Image
@@ -757,7 +813,7 @@ export default function FitnessCoach() {
             }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+            transition={{ duration: 0.6, delay: 0.7, ease: "easeOut" }}
             viewport={{ once: true, amount: 0.3 }}
           >
             2025 Ayon. Built for better living. All rights reserved.
