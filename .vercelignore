@@ -1,0 +1,4 @@
+# Vercel ignore file - force deployment
+node_modules
+.env.local
+.env
