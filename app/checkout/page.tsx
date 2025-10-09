@@ -8,6 +8,9 @@ import { motion } from "framer-motion";
 // Initialize Stripe
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
+// Debug: Log the publishable key (remove this after debugging)
+console.log('Stripe publishable key:', process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY ? 'Present' : 'Missing');
+
 // Inner component that has access to Stripe hooks
 function CheckoutForm() {
   const stripe = useStripe();
@@ -19,6 +22,9 @@ function CheckoutForm() {
   const [canMakePayment, setCanMakePayment] = useState(false);
 
   useEffect(() => {
+    console.log('Stripe object:', stripe);
+    console.log('Elements object:', elements);
+    
     if (stripe) {
       const pr = stripe.paymentRequest({
         country: 'US',
