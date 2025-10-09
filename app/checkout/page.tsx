@@ -29,6 +29,7 @@ function CheckoutForm() {
         },
         requestPayerName: true,
         requestPayerEmail: true,
+        disableWallets: ['link'], // Disable Link payment method
       });
 
       // Check if the Payment Request is available
