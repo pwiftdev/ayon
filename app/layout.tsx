@@ -67,6 +67,11 @@ const aeonikMono = localFont({
 export const metadata: Metadata = {
   title: "ayon - Personal Health Coach",
   description: "Launching soon on Kickstarter - Your personal health coach",
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({
