@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 export default function Deposit() {
@@ -262,27 +263,29 @@ export default function Deposit() {
             Due to high demand, we've opened a limited-time window to secure your Ayon device one week before the campaign begins, with extra benefits. A small $20 deposit today guarantees you exclusive perks at launch.
           </div>
 
-          <button 
-            className="bg-white text-black font-medium uppercase tracking-wider transition-all duration-300 border border-black hover:scale-105 mb-4"
-            style={{ 
-              width: '269px', 
-              height: '75px', 
-              borderRadius: '37.5px',
-              fontSize: '18px',
-              fontWeight: '500',
-              fontFamily: 'var(--font-aeonik)',
-              boxShadow: '0 0 0 0 rgba(238, 228, 172, 0.4), 0 0 0 0 rgba(246, 152, 121, 0.4)',
-              transition: 'all 0.3s ease, box-shadow 0.3s ease'
-            }}
-            onMouseEnter={(e) => {
-              (e.target as HTMLElement).style.boxShadow = '0 0 20px 8px rgba(238, 228, 172, 0.3), 0 0 40px 16px rgba(246, 152, 121, 0.2)';
-            }}
-            onMouseLeave={(e) => {
-              (e.target as HTMLElement).style.boxShadow = '0 0 0 0 rgba(238, 228, 172, 0.4), 0 0 0 0 rgba(246, 152, 121, 0.4)';
-            }}
-          >
-            SECURE YOUR BENEFITS
-          </button>
+          <Link href="/checkout">
+            <button 
+              className="bg-white text-black font-medium uppercase tracking-wider transition-all duration-300 border border-black hover:scale-105 mb-4"
+              style={{ 
+                width: '269px', 
+                height: '75px', 
+                borderRadius: '37.5px',
+                fontSize: '18px',
+                fontWeight: '500',
+                fontFamily: 'var(--font-aeonik)',
+                boxShadow: '0 0 0 0 rgba(238, 228, 172, 0.4), 0 0 0 0 rgba(246, 152, 121, 0.4)',
+                transition: 'all 0.3s ease, box-shadow 0.3s ease'
+              }}
+              onMouseEnter={(e) => {
+                (e.target as HTMLElement).style.boxShadow = '0 0 20px 8px rgba(238, 228, 172, 0.3), 0 0 40px 16px rgba(246, 152, 121, 0.2)';
+              }}
+              onMouseLeave={(e) => {
+                (e.target as HTMLElement).style.boxShadow = '0 0 0 0 rgba(238, 228, 172, 0.4), 0 0 0 0 rgba(246, 152, 121, 0.4)';
+              }}
+            >
+              SECURE YOUR BENEFITS
+            </button>
+          </Link>
 
           <div
             className="text-center"
