@@ -353,50 +353,77 @@ function CheckoutForm() {
       </motion.div>
 
           {/* Submit Button - Outside the white card */}
-          <motion.div className="flex justify-center mt-6">
-            <motion.button
-              onClick={handleSubmit}
-              disabled={!stripe || loading}
-              className="bg-white text-black font-medium uppercase tracking-wider transition-all duration-300 border border-black hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed px-8"
-        style={{ 
-          height: '60px', 
-          borderRadius: '30px',
-          fontSize: '18px',
-          fontWeight: '500',
-          fontFamily: 'var(--font-aeonik)',
-          boxShadow: '0 0 0 0 rgba(238, 228, 172, 0.4), 0 0 0 0 rgba(246, 152, 121, 0.4)',
-          transition: 'all 0.3s ease, box-shadow 0.3s ease'
-        }}
-        onMouseEnter={(e) => {
-          if (!loading) {
-            (e.target as HTMLElement).style.boxShadow = '0 0 20px 8px rgba(238, 228, 172, 0.3), 0 0 40px 16px rgba(246, 152, 121, 0.2)';
-          }
-        }}
-        onMouseLeave={(e) => {
-          (e.target as HTMLElement).style.boxShadow = '0 0 0 0 rgba(238, 228, 172, 0.4), 0 0 0 0 rgba(246, 152, 121, 0.4)';
-        }}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
-          >
-            {loading ? "Processing..." : "Deposit 20$"}
-          </motion.button>
+          <motion.div className="flex justify-center mt-9">
+            <div className="relative" style={{ width: '80%' }}>
+              <motion.button
+                onClick={handleSubmit}
+                disabled={!stripe || loading}
+                className="bg-white text-black font-medium uppercase tracking-wider transition-all duration-300 border border-black hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed w-full"
+          style={{ 
+            height: '60px', 
+            borderRadius: '30px',
+            fontSize: '18px',
+            fontWeight: '500',
+            fontFamily: 'var(--font-aeonik)',
+            boxShadow: '0 0 0 0 rgba(238, 228, 172, 0.4), 0 0 0 0 rgba(246, 152, 121, 0.4)',
+            transition: 'all 0.3s ease, box-shadow 0.3s ease',
+            position: 'relative',
+            zIndex: 1
+          }}
+          onMouseEnter={(e) => {
+            if (!loading) {
+              (e.target as HTMLElement).style.boxShadow = '0 0 20px 8px rgba(238, 228, 172, 0.3), 0 0 40px 16px rgba(246, 152, 121, 0.2)';
+            }
+          }}
+          onMouseLeave={(e) => {
+            (e.target as HTMLElement).style.boxShadow = '0 0 0 0 rgba(238, 228, 172, 0.4), 0 0 0 0 rgba(246, 152, 121, 0.4)';
+          }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
+            >
+              {loading ? "Processing..." : "Deposit 20$"}
+            </motion.button>
+            
+            {/* 100% Refundable Circle Badge */}
+            <div
+              className="absolute flex flex-col items-center justify-center"
+              style={{
+                width: '70px',
+                height: '70px',
+                borderRadius: '50%',
+                backgroundColor: '#F78D1E',
+                top: '-20px',
+                right: '-20px',
+                fontFamily: 'var(--font-aeonik)',
+                textAlign: 'center',
+                padding: '5px',
+                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)',
+                zIndex: 10,
+                pointerEvents: 'none',
+                animation: 'float 3s ease-in-out infinite'
+              }}
+            >
+              <span style={{ 
+                fontSize: '11px', 
+                fontWeight: '700',
+                color: '#211F1F',
+                lineHeight: '1'
+              }}>
+                100%
+              </span>
+              <span style={{ 
+                fontSize: '9px', 
+                fontWeight: '400',
+                color: '#211F1F',
+                lineHeight: '1.2',
+                marginTop: '2px'
+              }}>
+                refundable
+              </span>
+            </div>
+            </div>
           </motion.div>
-
-      {/* 100% Refundable Text */}
-      <motion.p
-        className="text-center mt-4"
-        style={{
-          fontFamily: 'var(--font-aeonik)',
-          fontSize: '14px',
-          color: '#211F1F'
-        }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.7, ease: "easeOut" }}
-      >
-        100% refundable
-      </motion.p>
 
       {/* Powered by Stripe Logo */}
       <motion.div

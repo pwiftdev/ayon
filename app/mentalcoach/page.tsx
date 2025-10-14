@@ -16,6 +16,7 @@ export default function MentalCoach() {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState("");
+  const [showStickyButton, setShowStickyButton] = useState(false);
 
   // Animation variants
   const fadeInUp = {
@@ -96,6 +97,21 @@ export default function MentalCoach() {
     return () => clearTimeout(timer);
   }, []);
 
+  // Scroll detection for sticky button
+  useEffect(() => {
+    const handleScroll = () => {
+      // Show sticky button after scrolling past hero section (around 600px)
+      if (window.scrollY > 600) {
+        setShowStickyButton(true);
+      } else {
+        setShowStickyButton(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const handleEmailSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -146,8 +162,38 @@ export default function MentalCoach() {
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#211F1F' }}>
+      {/* Sticky Button at Bottom Left */}
+      {showStickyButton && (
+        <motion.div
+          className="fixed bottom-8 left-8 z-50"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 20 }}
+          transition={{ duration: 0.3 }}
+        >
+          <button 
+            onClick={() => {
+              document.getElementById('email-signup')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }}
+            className="bg-white text-black font-medium uppercase tracking-wider transition-all duration-300 border border-black hover:scale-105 shadow-lg"
+            style={{ 
+              width: '200px', 
+              height: '60px', 
+              borderRadius: '30px',
+              fontSize: '14px',
+              fontWeight: '500',
+              fontFamily: 'var(--font-aeonik)',
+              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)',
+              transition: 'all 0.3s ease'
+            }}
+          >
+            NOTIFY ME AT LAUNCH
+          </button>
+        </motion.div>
+      )}
+
       {/* Top Banner */}
-      <div className="w-full py-3 md:py-3 h-[50px] md:h-auto" style={{ backgroundColor: '#211F1F' }}>
+      <div className="w-full py-3 md:py-3 h-[50px] md:h-auto sticky top-0 z-50" style={{ backgroundColor: '#211F1F' }}>
         <div className="flex items-center justify-center gap-2 h-full">
           <span className="text-sm font-medium tracking-wide uppercase" style={{ color: '#F78D1E', fontFamily: 'var(--font-aeonik-mono)', fontSize: '15px' }}>
             LAUNCHING SOON ON
@@ -901,21 +947,6 @@ export default function MentalCoach() {
             >
               hello@ayon.fit
             </motion.p>
-            
-            <motion.a
-              href="#"
-              className="text-white underline"
-              style={{
-                fontFamily: 'var(--font-aeonik)',
-                fontSize: '18px'
-              }}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
-              viewport={{ once: true, amount: 0.3 }}
-            >
-              Terms and conditions
-            </motion.a>
           </motion.div>
 
           {/* AYON Logo */}
