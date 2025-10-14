@@ -30,3 +30,13 @@ input::placeholder {
   color: #F78D1E !important;
   opacity: 1 !important;
 }
+
+/* Floating animation for badge */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}

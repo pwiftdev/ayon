@@ -350,21 +350,6 @@ export default function Deposit() {
             >
               hello@ayon.fit
             </motion.p>
-            
-            <motion.a
-              href="#"
-              className="text-white underline"
-              style={{
-                fontFamily: 'var(--font-aeonik)',
-                fontSize: '18px'
-              }}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
-              viewport={{ once: true, amount: 0.3 }}
-            >
-              Terms and conditions
-            </motion.a>
           </motion.div>
 
           {/* AYON Logo */}
