@@ -167,15 +167,29 @@ export default function Home() {
 
       {/* Hero Section */}
       <div className="relative w-full h-[520px] md:h-[769px]">
-        {/* Background Image - Full Viewport */}
-        <div className="absolute inset-0 w-full h-full">
-          <Image
-            src="/Assets/landingpage1assets/herosectiongif.png"
-            alt="ayon personal health coach background"
-            fill
-            className="object-cover"
-            priority
-          />
+        {/* Background Video - Full Viewport */}
+        <div className="absolute inset-0 w-full h-full overflow-hidden">
+          {/* Mobile Video */}
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover md:hidden"
+          >
+            <source src="/Assets/Mobile_Health Coach.mp4" type="video/mp4" />
+          </video>
+          
+          {/* Desktop Video */}
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="hidden md:block absolute inset-0 w-full h-full object-cover"
+          >
+            <source src="/Assets/Web_Health Coach.mp4" type="video/mp4" />
+          </video>
         </div>
         
         {/* Hero Content Overlay */}
@@ -292,7 +306,7 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
             viewport={{ once: true, amount: 0.3 }}
           >
-            Become a healthy version of yourself
+            Hello, I am ayon, your personal health coach.
           </motion.h2>
         </div>
       </motion.div>
@@ -340,7 +354,7 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
             viewport={{ once: true, amount: 0.3 }}
           >
-            of users report building lasting healthy habits
+            of beta users report building lasting healthy habits
           </motion.div>
         </motion.div>
       </motion.div>
@@ -366,10 +380,10 @@ export default function Home() {
         viewport={{ once: true, amount: 0.3 }}
       >
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-[100px] min-h-[350px]">
-          {/* Mobile: Text First, Desktop: Left Side Eclipse */}
+          {/* Mobile: Text First, Desktop: Right Side Text */}
           <motion.div 
-            className="flex flex-col justify-center order-1 md:order-1"
-            initial={{ opacity: 0, x: -60 }}
+            className="flex flex-col justify-center order-1 md:order-2"
+            initial={{ opacity: 0, x: 60 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
             viewport={{ once: true, amount: 0.3 }}
@@ -411,7 +425,7 @@ export default function Home() {
                     color: '#211F1F'
                   }}
                 >
-                  motivates you
+                  keeps you motivated to reach goals
                 </p>
               </motion.div>
               <motion.div 
@@ -428,7 +442,7 @@ export default function Home() {
                     color: '#211F1F'
                   }}
                 >
-                  helps you train effective
+                  helps you train effectively
                 </p>
               </motion.div>
               <motion.div 
@@ -445,16 +459,16 @@ export default function Home() {
                     color: '#211F1F'
                   }}
                 >
-                  talks with you
+                  protects your mental well-being
                 </p>
               </motion.div>
             </motion.div>
           </motion.div>
 
-          {/* Mobile: Eclipse Second, Desktop: Right Side Eclipse */}
+          {/* Mobile: Eclipse Second, Desktop: Left Side Eclipse */}
           <motion.div 
-            className="relative flex items-center justify-center order-2 md:order-2"
-            initial={{ opacity: 0, x: 60 }}
+            className="relative flex items-center justify-center order-2 md:order-1"
+            initial={{ opacity: 0, x: -60 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
             viewport={{ once: true, amount: 0.3 }}
@@ -478,7 +492,7 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
               viewport={{ once: true, amount: 0.3 }}
             >
-              It's time<br />to get fit!
+              Become a healthier version<br />of yourself!
             </motion.h2>
           </motion.div>
         </div>
@@ -486,19 +500,33 @@ export default function Home() {
 
       {/* GIF Section */}
       <motion.div 
-        className="w-full"
+        className="w-full relative h-[340px] md:h-[800px]"
         initial={{ opacity: 0, y: 60 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         viewport={{ once: true, amount: 0.3 }}
       >
-        <Image
-          src="/Assets/landingpage1assets/sectiongif2.jpg"
-          alt="ayon product demonstration"
-          width={1200}
-          height={340}
-          className="w-full h-[340px] md:h-[800px] object-cover"
-        />
+        {/* Mobile Video */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover md:hidden"
+        >
+          <source src="/Assets/HealthGIF2Mobile.mp4" type="video/mp4" />
+        </video>
+        
+        {/* Desktop Video */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="hidden md:block w-full h-full object-cover"
+        >
+          <source src="/Assets/HealthGIF2.mp4" type="video/mp4" />
+        </video>
       </motion.div>
 
       {/* Inner Calm Section - Reversed Layout */}
@@ -549,7 +577,7 @@ export default function Home() {
                     color: '#211F1F'
                   }}
                 >
-                  tracks your progress
+                  monitors your progress
                 </p>
               </div>
             </div>
@@ -586,13 +614,28 @@ export default function Home() {
         transition={{ duration: 0.8, ease: "easeOut" }}
         viewport={{ once: true, amount: 0.3 }}
       >
-        <Image
-          src="/Assets/landingpage1assets/sectiongif3.jpg"
-          alt="ayon product demonstration"
-          width={1200}
-          height={800}
-          className="w-full h-auto object-cover"
-        />
+        {/* Mobile Video */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-auto object-cover md:hidden"
+        >
+          <source src="/Assets/Mobile_Mental Coach.mp4" type="video/mp4" />
+        </video>
+        
+        {/* Desktop Video */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="hidden md:block w-full h-auto object-cover"
+        >
+          <source src="/Assets/Web_Mental Coach.mp4" type="video/mp4" />
+        </video>
+        
         {/* Text Overlay */}
         <div className="absolute inset-0 flex items-center">
           <div className="pl-5 md:pl-[120px]">
@@ -650,7 +693,7 @@ export default function Home() {
                     color: '#211F1F'
                   }}
                 >
-                  builds healthy habits
+                  improves sleep quality
                 </p>
               </div>
               <div className="border-b border-gray-800 pb-6">
@@ -661,7 +704,7 @@ export default function Home() {
                     color: '#211F1F'
                   }}
                 >
-                  conversational support
+                  offers conversational support
                 </p>
               </div>
             </div>
@@ -677,7 +720,7 @@ export default function Home() {
                 color: '#211F1F'
               }}
             >
-              In collaboration with
+              Designed and manufactured by
             </p>
             
             <div className="mb-4">
