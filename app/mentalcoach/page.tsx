@@ -165,15 +165,29 @@ export default function MentalCoach() {
 
       {/* Hero Section */}
       <div className="relative w-full h-[520px] md:h-[769px]">
-        {/* Background Image - Full Viewport */}
-        <div className="absolute inset-0 w-full h-full">
-          <Image
-            src="/Assets/landingpage1assets/lastsectionimg.png"
-            alt="ayon personal health coach background"
-            fill
-            className="object-cover"
-            priority
-          />
+        {/* Background Video - Full Viewport */}
+        <div className="absolute inset-0 w-full h-full overflow-hidden">
+          {/* Mobile Video */}
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover md:hidden"
+          >
+            <source src="/Assets/Mobile_Mental Coach.mp4" type="video/mp4" />
+          </video>
+          
+          {/* Desktop Video */}
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="hidden md:block absolute inset-0 w-full h-full object-cover"
+          >
+            <source src="/Assets/Web_Mental Coach.mp4" type="video/mp4" />
+          </video>
         </div>
         
         {/* Hero Content Overlay */}
@@ -208,7 +222,7 @@ export default function MentalCoach() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
             >
-              personal health<br className="md:hidden" />coach
+              personal mental <br className="md:hidden" />coach
             </motion.p>
           </motion.div>
 
@@ -250,7 +264,7 @@ export default function MentalCoach() {
       {/* New Section */}
       <motion.div 
         className="w-full bg-white flex items-center justify-center" 
-        style={{ paddingTop: '72px', paddingBottom: '72px' }}
+        style={{ paddingTop: '72px', paddingBottom: '10px' }}
         initial={{ opacity: 0, y: 60 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
@@ -293,6 +307,33 @@ export default function MentalCoach() {
             Hello, I am ayon, your stress relief guide.
           </motion.h2>
         </div>
+      </motion.div>
+
+      {/* Description Section */}
+      <motion.div 
+        className="w-full bg-white flex items-center justify-center px-5" 
+        style={{ paddingTop: '0px', paddingBottom: '72px' }}
+        initial={{ opacity: 0, y: 60 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <motion.p
+          className="text-center"
+          style={{
+            fontFamily: 'var(--font-aeonik-mono)',
+            fontSize: '24px',
+            color: '#211F1F',
+            lineHeight: '1.5',
+            maxWidth: '800px'
+          }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          Next-generation health device with built-in AI that guides your workouts and builds inner calm with guided meditation.
+        </motion.p>
       </motion.div>
 
       {/* Stats Section */}
@@ -338,7 +379,7 @@ export default function MentalCoach() {
             transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
             viewport={{ once: true, amount: 0.3 }}
           >
-            of users report building lasting healthy habits
+            of users report feeling calmer after just one session
           </motion.div>
         </motion.div>
       </motion.div>
@@ -357,40 +398,14 @@ export default function MentalCoach() {
       {/* Features Section */}
       <motion.div 
         className="w-full bg-white px-5 md:px-[120px]" 
-        style={{ paddingTop: '72px', paddingBottom: '200px' }}
+        style={{ paddingTop: '72px', paddingBottom: '72px' }}
         initial={{ opacity: 0, y: 60 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
         viewport={{ once: true, amount: 0.3 }}
       >
         <div className="max-w-6xl mx-auto grid grid-cols-1 gap-[100px] min-h-[350px]">
-          {/* Text First */}
-          <motion.div 
-            className="flex flex-col justify-center order-1"
-            initial={{ opacity: 0, x: -60 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            <motion.p
-              className="mb-6 text-center"
-              style={{
-                fontFamily: 'var(--font-aeonik-mono)',
-                fontSize: '24px',
-                color: '#211F1F',
-                lineHeight: '1.5'
-              }}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-              viewport={{ once: true, amount: 0.3 }}
-            >
-              Next-generation health device with built-in AI that guides your workouts and builds inner calm with guided meditation.
-            </motion.p>
-
-          </motion.div>
-
-          {/* Eclipse Second */}
+          {/* Eclipse */}
           <motion.div 
             className="relative flex items-center justify-center order-2"
             initial={{ opacity: 0, x: 60 }}
@@ -431,13 +446,28 @@ export default function MentalCoach() {
         transition={{ duration: 0.8, ease: "easeOut" }}
         viewport={{ once: true, amount: 0.3 }}
       >
-        <Image
-          src="/Assets/landingpage1assets/sectiongif3.jpg"
-          alt="ayon product demonstration"
-          width={1200}
-          height={800}
-          className="w-full h-auto object-cover"
-        />
+        {/* Mobile Video */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-auto object-cover md:hidden"
+        >
+          <source src="/Assets/Mobile_Health Coach.mp4" type="video/mp4" />
+        </video>
+        
+        {/* Desktop Video */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="hidden md:block w-full h-auto object-cover"
+        >
+          <source src="/Assets/Web_Health Coach.mp4" type="video/mp4" />
+        </video>
+        
         {/* Text Overlay */}
         <div className="absolute inset-0 flex items-center">
           <div className="pl-5 md:pl-[120px]">
@@ -523,7 +553,7 @@ export default function MentalCoach() {
                 color: '#211F1F'
               }}
             >
-              In collaboration with
+              Designed and<br />manufactured by
             </p>
             
             <div className="mb-4">
