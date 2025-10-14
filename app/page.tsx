@@ -224,7 +224,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
             >
-              personal health<br className="md:hidden" />coach
+              personal health <br className="md:hidden" />coach
             </motion.p>
           </motion.div>
 
