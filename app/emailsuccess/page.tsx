@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-export default function Success() {
+export default function EmailSuccess() {
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#211F1F' }}>
       {/* Top Banner */}
@@ -61,7 +61,7 @@ export default function Success() {
                 color: 'white'
               }}
             >
-              Thank you!
+              Success!
             </h1>
             <p 
               className="text-[18px]"
@@ -70,7 +70,7 @@ export default function Success() {
                 color: 'white'
               }}
             >
-              Your deposit was received, and a secret reward link with all the benefits will be sent to you when we launch on Kickstarter.
+              You've successfully claimed a discount of $150 off. We will follow-up with details.
             </p>
           </motion.div>
 
@@ -143,4 +143,3 @@ export default function Success() {
     </div>
   );
 }
-
