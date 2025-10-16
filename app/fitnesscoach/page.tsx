@@ -173,13 +173,32 @@ export default function FitnessCoach() {
         >
                   <button
                     onClick={() => {
-                      document.getElementById('email-signup')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                      setTimeout(() => {
-                        const emailInput = document.querySelector('#email-signup input[type="email"]') as HTMLInputElement;
-                        if (emailInput) {
-                          emailInput.focus();
+                      const emailSection = document.getElementById('email-signup');
+                      if (emailSection) {
+                        emailSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        
+                        // Multiple attempts to focus the input for better mobile support
+                        const focusInput = () => {
+                          const emailInput = document.querySelector('#email-signup input[type="email"]') as HTMLInputElement;
+                          if (emailInput) {
+                            // Force focus and click for mobile devices
+                            emailInput.click();
+                            emailInput.focus();
+                            // Additional mobile-specific focus attempt
+                            emailInput.setSelectionRange(0, 0);
+                            return true;
+                          }
+                          return false;
+                        };
+                        
+                        // Try immediate focus first
+                        if (!focusInput()) {
+                          // If immediate focus fails, try with delays
+                          setTimeout(focusInput, 300);
+                          setTimeout(focusInput, 800);
+                          setTimeout(focusInput, 1200);
                         }
-                      }, 500);
+                      }
                     }}
                     className="bg-white text-black font-medium uppercase tracking-wider transition-all duration-300 border border-black hover:scale-105 shadow-lg"
                     style={{
@@ -306,13 +325,32 @@ export default function FitnessCoach() {
           >
             <button 
               onClick={() => {
-                document.getElementById('email-signup')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                setTimeout(() => {
-                  const emailInput = document.querySelector('#email-signup input[type="email"]') as HTMLInputElement;
-                  if (emailInput) {
-                    emailInput.focus();
+                const emailSection = document.getElementById('email-signup');
+                if (emailSection) {
+                  emailSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                  
+                  // Multiple attempts to focus the input for better mobile support
+                  const focusInput = () => {
+                    const emailInput = document.querySelector('#email-signup input[type="email"]') as HTMLInputElement;
+                    if (emailInput) {
+                      // Force focus and click for mobile devices
+                      emailInput.click();
+                      emailInput.focus();
+                      // Additional mobile-specific focus attempt
+                      emailInput.setSelectionRange(0, 0);
+                      return true;
+                    }
+                    return false;
+                  };
+                  
+                  // Try immediate focus first
+                  if (!focusInput()) {
+                    // If immediate focus fails, try with delays
+                    setTimeout(focusInput, 300);
+                    setTimeout(focusInput, 800);
+                    setTimeout(focusInput, 1200);
                   }
-                }, 500);
+                }
               }}
               className="bg-white text-black font-medium uppercase tracking-wider transition-all duration-300 border border-black hover:scale-105"
               style={{ 
