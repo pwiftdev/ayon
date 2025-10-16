@@ -23,6 +23,7 @@ body {
   background: #ffffff;
   color: #171717;
   font-family: var(--font-aeonik), Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
 }
 
 /* Email input placeholder styling */
