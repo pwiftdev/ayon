@@ -41,8 +41,6 @@ const aeonik = localFont({
     },
   ],
   variable: "--font-aeonik",
-  display: 'swap',
-  preload: true,
 });
 
 const aeonikMono = localFont({
@@ -64,8 +62,6 @@ const aeonikMono = localFont({
     },
   ],
   variable: "--font-aeonik-mono",
-  display: 'swap',
-  preload: true,
 });
 
 export const metadata: Metadata = {
@@ -75,22 +71,6 @@ export const metadata: Metadata = {
     icon: '/favicon.ico',
     shortcut: '/favicon.ico',
     apple: '/favicon.ico',
-  },
-  // Performance optimizations
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-  // Preconnect to external domains
-  other: {
-    'dns-prefetch': 'https://connect.facebook.net',
   },
 };
 
@@ -102,13 +82,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Resource hints for performance */}
-        <link rel="preconnect" href="https://connect.facebook.net" />
-        <link rel="dns-prefetch" href="https://connect.facebook.net" />
-        
-        {/* Meta Pixel Code - Optimized loading */}
+        {/* Meta Pixel Code */}
         <script
-          defer
           dangerouslySetInnerHTML={{
             __html: `
 !function(f,b,e,v,n,t,s)
@@ -130,7 +105,6 @@ fbq('track', 'PageView');
             width="1"
             style={{ display: 'none' }}
             src="https://www.facebook.com/tr?id=850283090666946&ev=PageView&noscript=1"
-            alt=""
           />
         </noscript>
         {/* End Meta Pixel Code */}
