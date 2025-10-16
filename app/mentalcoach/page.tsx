@@ -226,7 +226,7 @@ export default function MentalCoach() {
             loop
             muted
             playsInline
-            preload="auto"
+            preload="metadata"
             crossOrigin="anonymous"
             webkit-playsinline="true"
             className="absolute inset-0 w-full h-full object-cover md:hidden"
@@ -246,7 +246,7 @@ export default function MentalCoach() {
             loop
             muted
             playsInline
-            preload="auto"
+            preload="metadata"
             crossOrigin="anonymous"
             webkit-playsinline="true"
             className="hidden md:block absolute inset-0 w-full h-full object-cover"
@@ -529,7 +529,7 @@ export default function MentalCoach() {
           loop
           muted
           playsInline
-          preload="auto"
+          preload="metadata"
           crossOrigin="anonymous"
           webkit-playsinline="true"
           className="w-full h-auto object-cover md:hidden"
@@ -549,7 +549,7 @@ export default function MentalCoach() {
           loop
           muted
           playsInline
-          preload="auto"
+          preload="metadata"
           crossOrigin="anonymous"
           webkit-playsinline="true"
           className="hidden md:block w-full h-auto object-cover"
