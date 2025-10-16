@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import OptimizedVideo from "./components/OptimizedVideo";
 import { motion } from "framer-motion";
 
 export default function Home() {
@@ -228,7 +229,7 @@ export default function Home() {
             loop
             muted
             playsInline
-            preload="auto"
+            preload="metadata"
             crossOrigin="anonymous"
             webkit-playsinline="true"
             className="absolute inset-0 w-full h-full object-cover md:hidden"
@@ -249,7 +250,7 @@ export default function Home() {
             loop
             muted
             playsInline
-            preload="auto"
+            preload="metadata"
             crossOrigin="anonymous"
             webkit-playsinline="true"
             className="hidden md:block absolute inset-0 w-full h-full object-cover"
@@ -586,44 +587,16 @@ export default function Home() {
         viewport={{ once: true, amount: 0.3 }}
       >
         {/* Mobile Video */}
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          crossOrigin="anonymous"
-          webkit-playsinline="true"
+        <OptimizedVideo
+          src="/Assets/HealthGIF2Mobile.mp4"
           className="w-full h-full object-cover md:hidden"
-          onLoadedData={(e) => {
-            const video = e.target as HTMLVideoElement;
-            video.play().catch(() => {
-              setTimeout(() => video.play(), 100);
-            });
-          }}
-        >
-          <source src="/Assets/HealthGIF2Mobile.mp4" type="video/mp4" />
-        </video>
+        />
         
         {/* Desktop Video */}
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          crossOrigin="anonymous"
-          webkit-playsinline="true"
+        <OptimizedVideo
+          src="/Assets/HealthGIF2.mp4"
           className="hidden md:block w-full h-full object-cover"
-          onLoadedData={(e) => {
-            const video = e.target as HTMLVideoElement;
-            video.play().catch(() => {
-              setTimeout(() => video.play(), 100);
-            });
-          }}
-        >
-          <source src="/Assets/HealthGIF2.mp4" type="video/mp4" />
-        </video>
+        />
       </motion.div>
 
       {/* Inner Calm Section - Reversed Layout */}
@@ -712,44 +685,16 @@ export default function Home() {
         viewport={{ once: true, amount: 0.3 }}
       >
         {/* Mobile Video */}
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          crossOrigin="anonymous"
-          webkit-playsinline="true"
+        <OptimizedVideo
+          src="/Assets/Mobile_Mental Coach.mp4"
           className="w-full h-auto object-cover md:hidden"
-          onLoadedData={(e) => {
-            const video = e.target as HTMLVideoElement;
-            video.play().catch(() => {
-              setTimeout(() => video.play(), 100);
-            });
-          }}
-        >
-          <source src="/Assets/Mobile_Mental Coach.mp4" type="video/mp4" />
-        </video>
+        />
         
         {/* Desktop Video */}
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          crossOrigin="anonymous"
-          webkit-playsinline="true"
+        <OptimizedVideo
+          src="/Assets/Web_Mental Coach.mp4"
           className="hidden md:block w-full h-auto object-cover"
-          onLoadedData={(e) => {
-            const video = e.target as HTMLVideoElement;
-            video.play().catch(() => {
-              setTimeout(() => video.play(), 100);
-            });
-          }}
-        >
-          <source src="/Assets/Web_Mental Coach.mp4" type="video/mp4" />
-        </video>
+        />
         
         {/* Text Overlay */}
         <div className="absolute inset-0 flex items-center">
