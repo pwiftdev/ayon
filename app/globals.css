@@ -40,3 +40,23 @@ input::placeholder {
     transform: translateY(-8px);
   }
 }
+
+/* Glow animation for sticky button */
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), 0 0 30px rgba(9, 206, 120, 0.6), 0 0 60px rgba(9, 206, 120, 0.4);
+  }
+  50% {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), 0 0 40px rgba(9, 206, 120, 0.8), 0 0 80px rgba(9, 206, 120, 0.6);
+  }
+}
+
+/* Jump animation for sticky button */
+@keyframes jump {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}

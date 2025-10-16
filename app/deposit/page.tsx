@@ -44,7 +44,7 @@ export default function Deposit() {
       <div 
         className="w-full flex items-center justify-center"
         style={{ 
-          backgroundColor: '#211F1F',
+          backgroundColor: '#09CE78',
           height: '100px'
         }}
       >
@@ -185,7 +185,7 @@ export default function Deposit() {
           </div>
 
           <div className="space-y-6">
-            <div className="border-b border-gray-800 pb-6">
+            <div className="border-t border-b border-gray-800 pt-6 pb-6">
               <p
                 style={{
                   fontFamily: 'var(--font-aeonik-mono)',
