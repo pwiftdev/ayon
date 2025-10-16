@@ -7,17 +7,17 @@ export default function ThankYou() {
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#211F1F' }}>
       {/* Top Banner */}
-      <div className="w-full py-3 md:py-3 h-[50px] md:h-auto" style={{ backgroundColor: '#211F1F' }}>
+      <div className="w-full py-3 md:py-3 h-[59.5px] md:h-[59.5px] sticky top-0 z-50" style={{ backgroundColor: '#09CE78' }}>
         <div className="flex items-center justify-center gap-2 h-full">
-          <span className="text-sm font-medium tracking-wide uppercase" style={{ color: '#F78D1E', fontFamily: 'var(--font-aeonik-mono)', fontSize: '15px' }}>
+          <span className="text-sm font-medium tracking-wide uppercase" style={{ color: 'white', fontFamily: 'var(--font-aeonik-mono)', fontSize: '21px' }}>
             LAUNCHING SOON ON
           </span>
           <Image
             src="/Assets/Kickstarter_logo.png"
             alt="Kickstarter"
-            width={90}
-            height={11.5}
-            className="h-[11.5px] w-[90px] md:h-[11px] md:w-[92px]"
+            width={126}
+            height={16.1}
+            className="h-[16.1px] w-[126px] md:h-[15.4px] md:w-[128.8px]"
             unoptimized
           />
         </div>
