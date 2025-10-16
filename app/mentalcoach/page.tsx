@@ -165,45 +165,52 @@ export default function MentalCoach() {
       {/* Sticky Button at Bottom Left */}
       {showStickyButton && (
         <motion.div
-          className="fixed bottom-8 left-8 z-50"
+          className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20 }}
           transition={{ duration: 0.3 }}
         >
-          <button 
-            onClick={() => {
-              document.getElementById('email-signup')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }}
-            className="bg-white text-black font-medium uppercase tracking-wider transition-all duration-300 border border-black hover:scale-105 shadow-lg"
-            style={{ 
-              width: '200px', 
-              height: '60px', 
-              borderRadius: '30px',
-              fontSize: '14px',
-              fontWeight: '500',
-              fontFamily: 'var(--font-aeonik)',
-              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)',
-              transition: 'all 0.3s ease'
-            }}
-          >
-            NOTIFY ME AT LAUNCH
-          </button>
+                  <button
+                    onClick={() => {
+                      document.getElementById('email-signup')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                      setTimeout(() => {
+                        const emailInput = document.querySelector('#email-signup input[type="email"]') as HTMLInputElement;
+                        if (emailInput) {
+                          emailInput.focus();
+                        }
+                      }, 500);
+                    }}
+                    className="bg-white text-black font-medium uppercase tracking-wider transition-all duration-300 border border-black hover:scale-105 shadow-lg"
+                    style={{
+                      width: '200px',
+                      height: '60px',
+                      borderRadius: '30px',
+                      fontSize: '14px',
+                      fontWeight: '500',
+                      fontFamily: 'var(--font-aeonik)',
+                      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3), 0 0 30px rgba(9, 206, 120, 0.6), 0 0 60px rgba(9, 206, 120, 0.4)',
+                      transition: 'all 0.3s ease',
+                      animation: 'jump 2s ease-in-out infinite, glow 3s ease-in-out infinite'
+                    }}
+                  >
+                    NOTIFY ME AT LAUNCH
+                  </button>
         </motion.div>
       )}
 
       {/* Top Banner */}
-      <div className="w-full py-3 md:py-3 h-[50px] md:h-auto sticky top-0 z-50" style={{ backgroundColor: '#211F1F' }}>
+      <div className="w-full py-3 md:py-3 h-[59.5px] md:h-[59.5px] sticky top-0 z-50" style={{ backgroundColor: '#09CE78' }}>
         <div className="flex items-center justify-center gap-2 h-full">
-          <span className="text-sm font-medium tracking-wide uppercase" style={{ color: '#F78D1E', fontFamily: 'var(--font-aeonik-mono)', fontSize: '15px' }}>
+          <span className="text-sm font-medium tracking-wide uppercase" style={{ color: 'white', fontFamily: 'var(--font-aeonik-mono)', fontSize: '21px' }}>
             LAUNCHING SOON ON
           </span>
           <Image
             src="/Assets/Kickstarter_logo.png"
             alt="Kickstarter"
-            width={90}
-            height={11.5}
-            className="h-[11.5px] w-[90px] md:h-[11px] md:w-[92px]"
+            width={126}
+            height={16.1}
+            className="h-[16.1px] w-[126px] md:h-[15.4px] md:w-[128.8px]"
             unoptimized
           />
         </div>
@@ -219,7 +226,16 @@ export default function MentalCoach() {
             loop
             muted
             playsInline
+            preload="auto"
+            crossOrigin="anonymous"
+            webkit-playsinline="true"
             className="absolute inset-0 w-full h-full object-cover md:hidden"
+            onLoadedData={(e) => {
+              const video = e.target as HTMLVideoElement;
+              video.play().catch(() => {
+                setTimeout(() => video.play(), 100);
+              });
+            }}
           >
             <source src="/Assets/Mobile_Mental Coach.mp4" type="video/mp4" />
           </video>
@@ -230,7 +246,16 @@ export default function MentalCoach() {
             loop
             muted
             playsInline
+            preload="auto"
+            crossOrigin="anonymous"
+            webkit-playsinline="true"
             className="hidden md:block absolute inset-0 w-full h-full object-cover"
+            onLoadedData={(e) => {
+              const video = e.target as HTMLVideoElement;
+              video.play().catch(() => {
+                setTimeout(() => video.play(), 100);
+              });
+            }}
           >
             <source src="/Assets/Web_Mental Coach.mp4" type="video/mp4" />
           </video>
@@ -282,6 +307,12 @@ export default function MentalCoach() {
             <button 
               onClick={() => {
                 document.getElementById('email-signup')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                setTimeout(() => {
+                  const emailInput = document.querySelector('#email-signup input[type="email"]') as HTMLInputElement;
+                  if (emailInput) {
+                    emailInput.focus();
+                  }
+                }, 500);
               }}
               className="bg-white text-black font-medium uppercase tracking-wider transition-all duration-300 border border-black hover:scale-105"
               style={{ 
@@ -498,7 +529,16 @@ export default function MentalCoach() {
           loop
           muted
           playsInline
+          preload="auto"
+          crossOrigin="anonymous"
+          webkit-playsinline="true"
           className="w-full h-auto object-cover md:hidden"
+          onLoadedData={(e) => {
+            const video = e.target as HTMLVideoElement;
+            video.play().catch(() => {
+              setTimeout(() => video.play(), 100);
+            });
+          }}
         >
           <source src="/Assets/Mobile_Health Coach.mp4" type="video/mp4" />
         </video>
@@ -509,7 +549,16 @@ export default function MentalCoach() {
           loop
           muted
           playsInline
+          preload="auto"
+          crossOrigin="anonymous"
+          webkit-playsinline="true"
           className="hidden md:block w-full h-auto object-cover"
+          onLoadedData={(e) => {
+            const video = e.target as HTMLVideoElement;
+            video.play().catch(() => {
+              setTimeout(() => video.play(), 100);
+            });
+          }}
         >
           <source src="/Assets/Web_Health Coach.mp4" type="video/mp4" />
         </video>
@@ -553,7 +602,7 @@ export default function MentalCoach() {
             </p>
 
             <div className="space-y-6">
-              <div className="border-b border-gray-800 pb-6">
+              <div className="border-t border-b border-gray-800 pt-6 pb-6">
                 <p
                   style={{
                     fontFamily: 'var(--font-aeonik-mono)',
