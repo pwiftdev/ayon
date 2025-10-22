@@ -22,30 +22,28 @@ export default function VideoPage() {
       {/* Mobile Video Section - Centered vertically */}
       <div className="w-full h-full flex items-center justify-center block md:hidden px-4">
         <div className="w-full max-w-sm">
-          <video 
-            controls
+          <iframe 
+            src="https://drive.google.com/file/d/1FYEssaYIqsC7MZjqd2iGionSz330qIis/preview" 
+            width="100%" 
+            height="100%"
+            allow="autoplay"
             className="w-full rounded-lg shadow-lg"
             style={{ aspectRatio: '16/9' }}
-            preload="metadata"
-          >
-            <source src="/video.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+          />
         </div>
       </div>
 
       {/* Desktop Video Section - Centered */}
       <div className="w-full min-h-screen hidden md:flex items-center justify-center py-8">
         <div className="w-full max-w-4xl lg:max-w-5xl xl:max-w-6xl 2xl:max-w-7xl px-4">
-          <video 
-            controls
+          <iframe 
+            src="https://drive.google.com/file/d/1FYEssaYIqsC7MZjqd2iGionSz330qIis/preview" 
+            width="100%" 
+            height="100%"
+            allow="autoplay"
             className="w-full rounded-lg shadow-2xl scale-105 sm:scale-110 md:scale-115 lg:scale-120 xl:scale-125 2xl:scale-130"
             style={{ aspectRatio: '16/9' }}
-            preload="metadata"
-          >
-            <source src="/video.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+          />
         </div>
       </div>
     </div>
