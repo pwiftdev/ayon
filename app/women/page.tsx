@@ -16,11 +16,11 @@ export default function WomenPage() {
       return;
     }
 
-    const listId = process.env.NEXT_PUBLIC_KLAVIYO_MAIN_LIST_ID;
+    const listId = process.env.NEXT_PUBLIC_KLAVIYO_WOMEN_LIST_ID;
     console.log('List ID:', listId);
 
     if (!listId) {
-      console.error('NEXT_PUBLIC_KLAVIYO_MAIN_LIST_ID is not defined');
+      console.error('NEXT_PUBLIC_KLAVIYO_WOMEN_LIST_ID is not defined');
       setSubmitMessage('Configuration error. Please contact support.');
       return;
     }
@@ -77,68 +77,56 @@ export default function WomenPage() {
         </div>
       </div>
 
-      {/* Hero Section */}
-      <div className="relative w-full h-[1000px] md:h-[769px]">
-        {/* Background Image - Full Viewport */}
-        <div className="absolute inset-0 w-full h-full overflow-hidden">
-          {/* Desktop Background */}
-          <Image
-            src="/Assets/landingpagenew/section1hero.png"
-            alt="ayon hero"
-            width={1200}
-            height={769}
-            className="absolute inset-0 w-full h-full object-cover hidden md:block"
-            priority
-            unoptimized
-          />
-            {/* Mobile Background */}
+      {/* Mobile Pre-Hero Section */}
+      <div className="block md:hidden w-full pt-8 pb-16" style={{ backgroundColor: '#F4F1EE' }}>
+        <div className="flex flex-col items-center text-center px-4">
+          {/* Ayon Logo */}
+          <div className="mb-4">
             <Image
-              src="/Assets/landingpagenew/womenheromobile.png"
-              alt="ayon hero mobile"
-              width={0}
-              height={0}
-              className="absolute inset-0 w-full h-full object-cover block md:hidden"
-              priority
+              src="/Assets/ayonlogopngblack.png"
+              alt="ayon"
+              width={130}
+              height={29}
+              className="object-contain"
               unoptimized
             />
-        </div>
-        
-        {/* Hero Content Overlay */}
-        <div className="relative z-10 w-full h-full">
-          {/* Centered Logo and Subtitle Group */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 flex flex-col items-center text-center top-[70px] md:top-1/2 md:-translate-y-1/2">
-            {/* AYON Logo */}
-            <div className="mb-4">
-              <Image
-                src="/Assets/ayonlogopngblack.png"
-                alt="ayon"
-                width={162}
-                height={36}
-                className="object-contain md:w-[272px] md:h-[61px]"
-                unoptimized
-              />
-            </div>
-
-            {/* Subtitle */}
-            <p className="font-bold tracking-wide text-[21px] leading-[21px]" style={{ color: '#211F1F' }}>
-              your AI personal trainer
-            </p>
           </div>
 
-          {/* Transformation GIF - Responsive distance from logo */}
-          <div className="absolute top-1/2 transform -translate-y-1/2 left-1/2 -translate-x-1/2 -ml-[200px] md:-ml-[300px] lg:-ml-[400px] xl:-ml-[500px] hidden md:block max-w-[25%] h-[70%]">
+          {/* Subtitle Text */}
+          <p className="mb-6" style={{ 
+            fontFamily: 'var(--font-aeonik)', 
+            fontSize: '15px', 
+            color: '#211F1F',
+            lineHeight: '1.5'
+          }}>
+            <span className="font-bold">smart workout companion</span> from your home
+          </p>
+
+          {/* Transformation GIF with Overlapping Image */}
+          <div className="relative flex justify-center">
             <Image
               src="/Assets/landingpagenew/Ayon_Transformation_Woman_V1.gif"
               alt="Ayon Transformation"
-              width={336}
-              height={700}
-              className="object-contain w-full h-full"
+              width={480}
+              height={1000}
+              className="object-contain"
               unoptimized
             />
+            {/* Overlapping Image */}
+            <div className="absolute bottom-0 left-0 right-0 transform translate-y-8 px-4">
+              <Image
+                src="/Assets/landingpagenew/mobileheronew.png"
+                alt="Mobile Hero New"
+                width={400}
+                height={350}
+                className="w-full h-auto object-contain"
+                unoptimized
+              />
+            </div>
           </div>
-
-          {/* CTA Button - Positioned 40px from bottom on mobile, centered on desktop */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 bottom-[40px] md:top-1/2 md:mt-[182px]">
+          
+          {/* Notify Me Button */}
+          <div className="flex justify-center -mt-4 relative z-10">
             <button 
               onClick={() => {
                 const emailSection = document.getElementById('email-signup');
@@ -188,150 +176,218 @@ export default function WomenPage() {
         </div>
       </div>
 
-      {/* Mobile Transformation Section */}
-      <div className="w-full block md:hidden py-4" style={{ backgroundColor: '#F4F1EE' }}>
-        <div className="flex justify-center">
-          <Image
-            src="/Assets/landingpagenew/Ayon_Transformation_Woman_V1.gif"
-            alt="Ayon Transformation"
-            width={480}
-            height={1000}
-            className="object-contain"
-            unoptimized
-          />
+      {/* Mobile Gradient Section */}
+      <div 
+        className="block md:hidden w-full h-[150px] relative"
+        style={{
+          background: 'linear-gradient(to bottom, #f4f1ee, #e7dcd1)'
+        }}
+      >
+        {/* Text Overlay in Gradient */}
+        <div className="absolute left-1/2 transform -translate-x-1/2 top-1/2 -translate-y-1/2 z-20">
+          <p className="text-center mb-2" style={{ 
+            fontFamily: 'var(--font-aeonik)', 
+            fontSize: '34px', 
+            color: '#211F1F',
+            lineHeight: '1.2'
+          }}>
+            <span className="font-bold">Holds you accountable</span><br />to keep training
+          </p>
+          <p className="text-center" style={{ 
+            fontFamily: 'var(--font-aeonik)', 
+            fontSize: '16px', 
+            color: '#211F1F',
+            lineHeight: '1.5'
+          }}>
+            Tracks your progress, corrects your form and motivates you.
+          </p>
         </div>
       </div>
 
-      {/* Second Section */}
-      <div className="w-full" style={{ backgroundColor: '#F4F1EE', paddingTop: '72px', paddingBottom: '72px' }}>
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12 px-4 md:px-0">
-            <h1 
-              className="font-bold leading-tight"
-              style={{
+      {/* Hero Section */}
+      <div className="relative w-full h-[700px] md:h-[769px]">
+        {/* Background Image - Full Viewport */}
+        <div className="absolute inset-0 w-full h-full overflow-hidden">
+          {/* Desktop Background */}
+          <Image
+            src="/Assets/landingpagenew/herosectionimagenew.png"
+            alt="ayon hero"
+            width={1200}
+            height={769}
+            className="absolute inset-0 w-full h-full object-cover hidden md:block"
+            priority
+            unoptimized
+          />
+          {/* Mobile Background */}
+          <Image
+            src="/Assets/landingpagenew/mobilewomenimage.png"
+            alt="mobile women image"
+            width={0}
+            height={0}
+            className="absolute inset-0 w-full h-full object-cover block md:hidden"
+            priority
+            unoptimized
+          />
+          {/* Mobile Gradient Overlay */}
+          <div 
+            className="absolute inset-0 block md:hidden"
+            style={{
+              background: 'linear-gradient(to bottom, rgba(231, 220, 209, 1), rgba(231, 220, 209, 0) 30%)'
+            }}
+          ></div>
+        </div>
+        
+        {/* Hero Content Overlay */}
+        <div className="relative z-10 w-full h-full">
+          {/* Centered Logo and Subtitle Group - Desktop Only */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 flex flex-col items-center text-center top-[120px] md:top-[200px] md:translate-y-0 hidden md:flex">
+            {/* AYON Logo */}
+            <div className="mb-4">
+              <Image
+                src="/Assets/ayonlogopngwhite.png"
+                alt="ayon"
+                width={162}
+                height={36}
+                className="object-contain md:w-[272px] md:h-[61px]"
+                unoptimized
+              />
+            </div>
+
+            {/* Subtitle */}
+            <p className="font-bold tracking-wide text-[21px] leading-[21px]" style={{ color: 'white' }}>
+              smart workout companion<br />for your home
+            </p>
+          </div>
+
+          {/* Transformation GIF - Responsive distance from logo */}
+          <div className="absolute top-1/2 transform -translate-y-1/2 left-1/2 -translate-x-1/2 -ml-[200px] md:-ml-[300px] lg:-ml-[400px] xl:-ml-[500px] hidden md:block max-w-[25%] h-[70%]">
+            <Image
+              src="/Assets/landingpagenew/Ayon_Transformation_Woman_V1.gif"
+              alt="Ayon Transformation"
+              width={336}
+              height={700}
+              className="object-contain w-full h-full"
+              unoptimized
+            />
+          </div>
+
+          {/* Mobile Image - Positioned 10px from bottom on mobile */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 bottom-[10px] block md:hidden w-[90%]">
+            <Image
+              src="/Assets/landingpagenew/section2-1left.png"
+              alt="Section 2 left"
+              width={585}
+              height={130}
+              className="w-full h-auto object-contain"
+              unoptimized
+            />
+          </div>
+
+          {/* Desktop CTA Button - centered on desktop */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 md:top-1/2 md:mt-[182px] hidden md:block">
+            <button 
+              onClick={() => {
+                const emailSection = document.getElementById('email-signup');
+                if (emailSection) {
+                  emailSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                  
+                  // Multiple attempts to focus the input for better mobile support
+                  const focusInput = () => {
+                    const emailInput = document.querySelector('#email-signup input[type="email"]') as HTMLInputElement;
+                    if (emailInput) {
+                      // Force focus and click for mobile devices
+                      emailInput.click();
+                      emailInput.focus();
+                      // Additional mobile-specific focus attempt
+                      emailInput.setSelectionRange(0, 0);
+                      return true;
+                    }
+                    return false;
+                  };
+                  
+                  // Try immediate focus first
+                  if (!focusInput()) {
+                    // If immediate focus fails, try with delays
+                    setTimeout(focusInput, 300);
+                    setTimeout(focusInput, 800);
+                    setTimeout(focusInput, 1200);
+                  }
+                }
+              }}
+              className="font-medium capitalize tracking-wider transition-all duration-300 border border-black hover:scale-105"
+              style={{ 
+                width: '269px', 
+                height: '75px', 
+                borderRadius: '37.5px',
+                fontSize: '18px',
+                fontWeight: '500',
                 fontFamily: 'var(--font-aeonik)',
-                color: '#211F1F',
-                fontSize: '42px',
-                lineHeight: '1.2'
+                backgroundColor: '#2BDE73',
+                color: 'white',
+                border: 'none',
+                transition: 'all 0.3s ease'
               }}
             >
-              Snap a photo<br />& build your future body
-            </h1>
-          </div>
-          
-          {/* 2 Column Grid */}
-          <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8" style={{ marginTop: '-100px' }}>
-            {/* Left Image */}
-            <div className="flex justify-center">
-              <Image
-                src="/Assets/landingpagenew/section2image.png"
-                alt="Section 2 image"
-                width={600}
-                height={400}
-                className="w-full h-auto object-contain"
-                unoptimized
-              />
-            </div>
-            
-            {/* Right Image */}
-            <div className="flex justify-center">
-              <Image
-                src="/Assets/landingpagenew/section2image2.png"
-                alt="Section 2 image 2"
-                width={358}
-                height={338}
-                className="object-contain"
-                unoptimized
-              />
-            </div>
+              Notify Me At Launch
+            </button>
           </div>
         </div>
       </div>
 
-      {/* Third Section */}
-      <div className="relative w-full">
-        {/* Background Image */}
-        <Image
-          src="/Assets/landingpagenew/section3image.png"
-          alt="Section 3 background"
-          width={1200}
-          height={800}
-          className="w-full h-auto object-cover hidden md:block"
-          unoptimized
-        />
-        {/* Mobile Background Image */}
-        <Image
-          src="/Assets/landingpagenew/section3imagemobile.png"
-          alt="Section 3 background mobile"
-          width={0}
-          height={0}
-          className="w-full h-auto object-cover block md:hidden"
-          unoptimized
-        />
-        
-        {/* Overlapping Text and Bar */}
-        <div className="absolute inset-0 flex flex-col items-center" style={{ paddingTop: '80px' }}>
-          <h1 
-            className="font-bold leading-tight text-center"
-            style={{
-              fontFamily: 'var(--font-aeonik)',
-              color: '#211F1F',
-              fontSize: '42px',
-              lineHeight: '1.2',
-              marginBottom: '80px'
-            }}
-          >
-            Stay motivated to<br />reach your goals
+      {/* New Mobile Section */}
+      <div className="block md:hidden w-full pt-16 pb-8" style={{ backgroundColor: '#F4F1EE' }}>
+        <div className="flex flex-col items-center text-center">
+          {/* Main Heading */}
+          <h1 className="mb-4 px-4" style={{ 
+            fontFamily: 'var(--font-aeonik)', 
+            fontSize: '34px', 
+            color: '#211F1F',
+            lineHeight: '1.2'
+          }}>
+            <span className="font-bold">Short workouts that</span><br />fit your schedule
           </h1>
-          
-          {/* Bar Image */}
-          <Image
-            src="/Assets/landingpagenew/section3bar.png"
-            alt="Section 3 bar"
-            width={470}
-            height={103}
-            className="object-contain w-[75%] md:w-[470px]"
-            unoptimized
-          />
+
+          {/* Subtitle */}
+          <p className="mb-6 px-4" style={{ 
+            fontFamily: 'var(--font-aeonik)', 
+            fontSize: '16px', 
+            color: '#211F1F',
+            lineHeight: '1.5'
+          }}>
+            Ayon notices small breaks and turns it into short & effective workouts.
+          </p>
+
+          {/* First Image - 90% width */}
+          <div className="mb-6 w-[90%]">
+            <Image
+              src="/Assets/landingpagenew/section3-1right.png"
+              alt="Section 3 right"
+              width={292}
+              height={65}
+              className="w-full h-auto object-contain"
+              unoptimized
+            />
+          </div>
+
+          {/* Second Image - 100% width */}
+          <div className="w-full">
+            <Image
+              src="/Assets/landingpagenew/groupmobile.png"
+              alt="Group mobile"
+              width={400}
+              height={300}
+              className="w-full h-auto object-contain"
+              unoptimized
+            />
+          </div>
         </div>
       </div>
 
       {/* Fourth Section - Mobile 4 Rows, Desktop 2 Columns */}
       <div className="w-full">
-        {/* Mobile Layout - 4 Rows */}
+        {/* Mobile Layout - 2 Rows (3rd and 4th items only) */}
         <div className="block md:hidden">
-          {/* Row 1: Track your progress anywhere */}
-          <div className="w-full py-8" style={{ backgroundColor: '#F4F1EE' }}>
-            <div className="text-center px-4">
-              <h1 
-                className="font-bold"
-                style={{
-                  fontFamily: 'var(--font-aeonik)',
-                  color: '#211F1F',
-                  fontSize: '32px',
-                  lineHeight: '1.2'
-                }}
-              >
-                Track your<br />progress anywhere
-              </h1>
-            </div>
-          </div>
-
-          {/* Row 2: Image */}
-          <div className="w-full py-8" style={{ backgroundColor: '#F4F1EE' }}>
-            <div className="flex justify-center">
-              <Image
-                src="/Assets/landingpagenew/section4photo.png"
-                alt="Section 4 photo"
-                width={600}
-                height={400}
-                className="w-full h-auto object-contain"
-                unoptimized
-              />
-            </div>
-          </div>
-
-          {/* Row 3: Description text */}
+          {/* Row 1: Description text */}
           <div className="w-full py-8" style={{ backgroundColor: '#F4F1EE' }}>
             <div className="text-center px-4">
               <p
@@ -356,7 +412,7 @@ export default function WomenPage() {
             </div>
           </div>
 
-          {/* Row 4: Pills/Tags */}
+          {/* Row 2: Pills/Tags */}
           <div className="w-full relative" style={{ backgroundColor: '#F4F1EE' }}>
             {/* Background Image */}
             <div className="w-full">
@@ -449,26 +505,14 @@ export default function WomenPage() {
 
         {/* Desktop Layout - 2 Columns */}
         <div className="hidden md:grid grid-cols-2 min-h-[400px]">
-          {/* Left Column - Image */}
-          <div className="flex justify-center items-center">
-            <Image
-              src="/Assets/landingpagenew/section4photo.png"
-              alt="Section 4 photo"
-              width={600}
-              height={400}
-              className="w-full h-auto object-contain"
-              unoptimized
-            />
-          </div>
-          
-          {/* Right Column - Text Content */}
+          {/* Left Column - Text Content */}
           <div 
             className="w-full h-full min-h-[400px] flex flex-col justify-center items-center px-8 py-12"
             style={{ backgroundColor: '#F4F1EE' }}
           >
             {/* Main Heading */}
             <h1 
-              className="text-center font-bold"
+              className="text-center"
               style={{
                 fontFamily: 'var(--font-aeonik)',
                 color: '#211F1F',
@@ -477,84 +521,8 @@ export default function WomenPage() {
                 marginBottom: '60px'
               }}
             >
-              Track your<br />progress anywhere
+              <span className="font-bold">Holds you accountable</span><br />to keep training
             </h1>
-
-            {/* Pill-shaped Tags */}
-            <div className="flex flex-wrap justify-center gap-3 max-w-md" style={{ marginBottom: '60px' }}>
-              {/* First row */}
-              <div className="flex gap-3 w-full justify-center mb-3">
-                <div 
-                  className="px-4 py-2 rounded-full border"
-                  style={{
-                    backgroundColor: 'white',
-                    borderColor: '#211F1F',
-                    color: '#211F1F',
-                    fontFamily: 'var(--font-aeonik)',
-                    fontSize: '14px',
-                    fontWeight: '500'
-                  }}
-                >
-                  Repetition accuracy
-                </div>
-                <div 
-                  className="px-4 py-2 rounded-full border"
-                  style={{
-                    backgroundColor: 'white',
-                    borderColor: '#211F1F',
-                    color: '#211F1F',
-                    fontFamily: 'var(--font-aeonik)',
-                    fontSize: '14px',
-                    fontWeight: '500'
-                  }}
-                >
-                  Tempo and pacing
-                </div>
-              </div>
-              
-              {/* Second row */}
-              <div className="flex gap-3 w-full justify-center">
-                <div 
-                  className="px-4 py-2 rounded-full border"
-                  style={{
-                    backgroundColor: 'white',
-                    borderColor: '#211F1F',
-                    color: '#211F1F',
-                    fontFamily: 'var(--font-aeonik)',
-                    fontSize: '14px',
-                    fontWeight: '500'
-                  }}
-                >
-                  Fatigue markers
-                </div>
-                <div 
-                  className="px-4 py-2 rounded-full border"
-                  style={{
-                    backgroundColor: 'white',
-                    borderColor: '#211F1F',
-                    color: '#211F1F',
-                    fontFamily: 'var(--font-aeonik)',
-                    fontSize: '14px',
-                    fontWeight: '500'
-                  }}
-                >
-                  Tension Times
-                </div>
-                <div 
-                  className="px-4 py-2 rounded-full border"
-                  style={{
-                    backgroundColor: 'white',
-                    borderColor: '#211F1F',
-                    color: '#211F1F',
-                    fontFamily: 'var(--font-aeonik)',
-                    fontSize: '14px',
-                    fontWeight: '500'
-                  }}
-                >
-                  Heart rate zones
-                </div>
-              </div>
-            </div>
 
             {/* Bottom Text Block */}
             <div className="text-center max-w-sm">
@@ -562,21 +530,37 @@ export default function WomenPage() {
                 style={{
                   fontFamily: 'var(--font-aeonik)',
                   color: '#211F1F',
-                  fontSize: '16px',
+                  fontSize: '25px',
                   lineHeight: '1.5'
                 }}
               >
-                Design to track <strong>the effectiveness<br />
-                of your workouts with</strong> <Image
-                  src="/Assets/ayonlogopngblack.png"
-                  alt="ayon"
-                  width={60}
-                  height={13}
-                  className="inline-block mx-1"
-                  unoptimized
-                /> AI
+                Tracks your progress, corrects your form and motivates you.
               </p>
             </div>
+            
+            {/* Additional Image */}
+            <div className="mt-8 flex justify-center">
+              <Image
+                src="/Assets/landingpagenew/section2-1left.png"
+                alt="Section 2 left"
+                width={585}
+                height={130}
+                className="object-contain"
+                unoptimized
+              />
+            </div>
+          </div>
+          
+          {/* Right Column - Image */}
+          <div className="w-full h-full">
+            <Image
+              src="/Assets/landingpagenew/womensectionsectionright.png"
+              alt="Women section right"
+              width={600}
+              height={400}
+              className="w-full h-full object-cover"
+              unoptimized
+            />
           </div>
         </div>
       </div>
@@ -631,14 +615,26 @@ export default function WomenPage() {
 
         {/* Desktop Layout - 2 Columns */}
         <div className="hidden md:grid grid-cols-2 min-h-[400px]">
-          {/* Left Column - Chat Content */}
+          {/* Left Column - Image */}
+          <div className="w-full h-full">
+            <Image
+              src="/Assets/landingpagenew/section3-1left.png"
+              alt="Section 3 left"
+              width={600}
+              height={400}
+              className="w-full h-full object-cover"
+              unoptimized
+            />
+          </div>
+          
+          {/* Right Column - Content */}
           <div 
             className="w-full h-full min-h-[400px] flex flex-col justify-center items-center px-8 py-12"
             style={{ backgroundColor: '#F4F1EE' }}
           >
             {/* Main Heading */}
             <h1 
-              className="text-center font-bold"
+              className="text-center"
               style={{
                 fontFamily: 'var(--font-aeonik)',
                 color: '#211F1F',
@@ -647,47 +643,34 @@ export default function WomenPage() {
                 marginBottom: '60px'
               }}
             >
-              Chat with a<br />professional
+              <span className="font-bold">Short workouts</span><br />that fit your schedule
             </h1>
 
-            {/* Message Images */}
-            <div className="flex flex-col items-center gap-4 max-w-sm">
-              {/* First message - slightly left */}
-              <div className="self-start">
-                <Image
-                  src="/Assets/landingpagenew/message1.png"
-                  alt="Message 1"
-                  width={358}
-                  height={181}
-                  className="object-contain"
-                  unoptimized
-                />
-              </div>
-              
-              {/* Second message - slightly right */}
-              <div className="self-end">
-                <Image
-                  src="/Assets/landingpagenew/message2.png"
-                  alt="Message 2"
-                  width={213}
-                  height={89}
-                  className="object-contain"
-                  unoptimized
-                />
-              </div>
+            {/* Subtitle */}
+            <div className="text-center max-w-sm">
+              <p
+                style={{
+                  fontFamily: 'var(--font-aeonik)',
+                  color: '#211F1F',
+                  fontSize: '25px',
+                  lineHeight: '1.5'
+                }}
+              >
+                Ayon notices small breaks and turns it into short & effective workouts.
+              </p>
             </div>
-          </div>
-          
-          {/* Right Column - Image */}
-          <div className="flex justify-center items-center">
-            <Image
-              src="/Assets/landingpagenew/section5image.png"
-              alt="Section 5 image"
-              width={600}
-              height={400}
-              className="w-full h-auto object-contain"
-              unoptimized
-            />
+            
+            {/* Additional Image */}
+            <div className="mt-8 flex justify-center">
+              <Image
+                src="/Assets/landingpagenew/section3-1right.png"
+                alt="Section 3 right"
+                width={292}
+                height={65}
+                className="object-contain"
+                unoptimized
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -801,112 +784,88 @@ export default function WomenPage() {
       {/* Last Section - Mobile 3 Columns, Desktop 2 Columns */}
       <div className="w-full flex justify-center" style={{ backgroundColor: '#F4F1EE' }}>
         <div className="max-w-7xl w-full">
-          {/* Mobile Layout - 3 Rows */}
-          <div className="block md:hidden">
-            <div className="flex flex-col gap-8 py-8">
-              {/* Column 1: Discount Text */}
-              <div className="flex flex-col justify-center items-center text-center px-2">
-                <h1 
-                  className="font-bold leading-tight"
-                  style={{
-                    fontFamily: 'var(--font-aeonik)',
-                    fontSize: '38px',
-                    lineHeight: '1.2'
-                  }}
-                >
-                  <span style={{ color: '#211F1F' }}>Get a</span> <span style={{ color: '#2BDE73', fontWeight: 'bold' }}>$150 discount</span><br />
-                  <span style={{ fontSize: '20px' }}>only for <strong style={{ color: '#211F1F' }}>early subscribers.</strong></span>
-                </h1>
-              </div>
+          {/* Mobile Layout - Overlapping Elements */}
+          <div className="block md:hidden relative py-8" style={{ height: '500px' }}>
+            {/* Column 1: Discount Text */}
+            <div className="absolute top-8 left-0 right-0 flex flex-col justify-center items-center text-center px-4 z-10">
+              <h1 
+                className="font-bold leading-tight"
+                style={{
+                  fontFamily: 'var(--font-aeonik)',
+                  fontSize: '38px',
+                  lineHeight: '1.2'
+                }}
+              >
+                <span style={{ color: '#211F1F' }}>Get a</span> <span style={{ color: '#2BDE73', fontWeight: 'bold' }}>$150 discount</span><br />
+                <span style={{ fontSize: '20px' }}>only for <strong style={{ color: '#211F1F' }}>early subscribers.</strong></span>
+              </h1>
+            </div>
 
-              {/* Column 2: Image */}
-              <div className="flex justify-center items-center">
-                <Image
-                  src="/Assets/landingpagenew/lastsectionimage.png"
-                  alt="Last section image"
-                  width={530}
-                  height={370}
-                  className="w-full h-auto object-contain"
-                  unoptimized
-                />
-              </div>
+            {/* Column 2: Image */}
+            <div className="absolute top-1/2 left-0 right-0 transform -translate-y-1/2 flex justify-center items-center z-20">
+              <Image
+                src="/Assets/landingpagenew/lastsectionphotonew.png"
+                alt="Last section photo new"
+                width={400}
+                height={280}
+                className="w-[80%] h-auto object-contain"
+                unoptimized
+              />
+            </div>
 
-              {/* Column 3: AYON Pack */}
-              <div className="flex flex-col justify-center items-center text-center px-2">
-                <div className="mb-4">
-                  <div className="flex items-center justify-center gap-2">
-                    <Image
-                      src="/Assets/ayonlogopngblack.png"
-                      alt="ayon"
-                      width={60}
-                      height={14}
-                      className="object-contain"
-                      unoptimized
-                    />
-                    <span 
-                      style={{
-                        fontFamily: 'var(--font-aeonik)',
-                        fontSize: '20px',
-                        fontWeight: 'bold',
-                        color: '#211F1F'
-                      }}
-                    >
-                      Pack
-                    </span>
-                  </div>
-                </div>
-
-                {/* Features List */}
-                <div className="text-center">
-                  <ul className="space-y-2">
-                    <li style={{
-                      fontFamily: 'var(--font-aeonik)',
-                      fontSize: '16px',
-                      fontWeight: 'medium',
-                      color: '#211F1F'
-                    }}>
-                      4x Fitly Smart Bands for wrist and ankles
-                    </li>
-                    <li style={{
-                      fontFamily: 'var(--font-aeonik)',
-                      fontSize: '16px',
-                      fontWeight: 'medium',
-                      color: '#211F1F'
-                    }}>
-                      Wireless Charging Case
-                    </li>
-                    <li style={{
-                      fontFamily: 'var(--font-aeonik)',
-                      fontSize: '16px',
-                      fontWeight: 'medium',
-                      color: '#211F1F'
-                    }}>
-                      Free Fitly App with 5000+ workouts
-                    </li>
-                  </ul>
-                </div>
-
-                {/* Orange Line */}
-                <div className="mt-4">
-                  <div 
+            {/* Column 3: AYON Pack */}
+            <div className="absolute bottom-4 left-0 right-0 flex flex-col justify-center items-center text-center px-4 z-10">
+              <div className="mb-4">
+                <div className="flex items-center justify-center gap-2">
+                  <Image
+                    src="/Assets/ayonlogopngblack.png"
+                    alt="ayon"
+                    width={60}
+                    height={14}
+                    className="object-contain"
+                    unoptimized
+                  />
+                  <span 
                     style={{
-                      width: '60px',
-                      height: '2px',
-                      backgroundColor: '#F78D1E'
+                      fontFamily: 'var(--font-aeonik)',
+                      fontSize: '20px',
+                      fontWeight: 'bold',
+                      color: '#211F1F'
                     }}
-                  ></div>
+                  >
+                    Pack
+                  </span>
                 </div>
+              </div>
 
-                {/* Recycled Materials Text */}
-                <div className="mt-2">
-                  <p style={{
+              {/* Features List */}
+              <div className="text-center">
+                <ul className="space-y-2">
+                  <li style={{
                     fontFamily: 'var(--font-aeonik)',
-                    fontSize: '10px',
+                    fontSize: '16px',
+                    fontWeight: 'medium',
                     color: '#211F1F'
                   }}>
-                    Made from 100% recycled fabric and plastic.
-                  </p>
-                </div>
+                    Ayon Smart Workout Companion
+                  </li>
+                  <li style={{
+                    fontFamily: 'var(--font-aeonik)',
+                    fontSize: '16px',
+                    fontWeight: 'medium',
+                    color: '#211F1F'
+                  }}>
+                    Wireless Charging Case
+                  </li>
+                  <li style={{
+                    fontFamily: 'var(--font-aeonik)',
+                    fontSize: '16px',
+                    fontWeight: 'medium',
+                    color: '#211F1F'
+                  }}>
+                    Free Ayon App with 5,000+ workouts
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
@@ -919,8 +878,8 @@ export default function WomenPage() {
               style={{ backgroundColor: '#F4F1EE' }}
             >
               <Image
-                src="/Assets/landingpagenew/lastsectionimage.png"
-                alt="Last section image"
+                src="/Assets/landingpagenew/lastsectionphotonew.png"
+                alt="Last section photo new"
                 width={530}
                 height={370}
                 className="w-full h-auto object-contain"
@@ -981,7 +940,7 @@ export default function WomenPage() {
                     fontWeight: 'medium',
                     color: '#211F1F'
                   }}>
-                    4x Fitly Smart Bands for wrist and ankles
+                    Ayon Smart Workout Companion
                   </li>
                   <li style={{
                     fontFamily: 'var(--font-aeonik)',
@@ -989,7 +948,7 @@ export default function WomenPage() {
                     fontWeight: 'medium',
                     color: '#211F1F'
                   }}>
-                    Wireless charging case
+                    Wireless Charging Case
                   </li>
                   <li style={{
                     fontFamily: 'var(--font-aeonik)',
@@ -997,31 +956,9 @@ export default function WomenPage() {
                     fontWeight: 'medium',
                     color: '#211F1F'
                   }}>
-                    Free Fitly App with 5000+ workouts
+                    Free Ayon App with 5,000+ workouts
                   </li>
                 </ul>
-              </div>
-
-              {/* Orange Line */}
-              <div className="text-left mb-8">
-                <div 
-                  style={{
-                    width: '100px',
-                    height: '2px',
-                    backgroundColor: '#F78D1E'
-                  }}
-                ></div>
-              </div>
-
-              {/* Recycled Materials Text */}
-              <div className="text-left">
-                <p style={{
-                  fontFamily: 'var(--font-aeonik)',
-                  fontSize: '16px',
-                  color: '#211F1F'
-                }}>
-                  Made from 100% recycled fabric and plastic.
-                </p>
               </div>
             </div>
           </div>

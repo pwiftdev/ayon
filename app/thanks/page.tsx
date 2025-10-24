@@ -23,30 +23,23 @@ export default function Thanks() {
         </div>
       </div>
 
-      {/* Background Image Section */}
+      {/* Background Section */}
       <div 
         className="w-full min-h-screen flex items-center justify-center relative"
+        style={{ backgroundColor: '#F4F1EE' }}
       >
-        {/* Background Image */}
-        <Image
-          src="/Assets/landingpagenew/ayonthankspage.png"
-          alt="Ayon Thanks Page Background"
-          fill
-          className="object-cover"
-          priority
-          unoptimized
-        />
-        <div className="flex flex-col items-center justify-center h-full min-h-screen relative z-10">
-          {/* Thank You Content - Dead Center */}
+        <div className="flex items-center justify-center h-full min-h-screen relative z-10">
+          {/* Main Content Container - Vertical Flex */}
           <motion.div 
-            className="text-center"
+            className="flex flex-col items-center justify-center text-center"
             style={{ width: '360px' }}
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
+            {/* Thank You Tick Icon */}
             <motion.div
-              className="mb-8"
+              style={{ marginBottom: '20px' }}
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
@@ -60,44 +53,40 @@ export default function Thanks() {
               />
             </motion.div>
             
+            {/* Thank You Heading */}
             <h1 
-              className="text-[40px] font-bold mb-6"
+              className="text-[40px] font-bold"
               style={{
                 fontFamily: 'var(--font-aeonik)',
-                color: 'white'
+                color: '#211F1F',
+                marginBottom: '40px'
               }}
             >
               Thank you!
             </h1>
+            
+            {/* Thank You Text */}
             <p 
               className="text-[18px]"
               style={{
                 fontFamily: 'var(--font-aeonik)',
-                color: 'white'
+                color: '#211F1F',
+                marginBottom: '120px'
               }}
             >
               To claim your <span className="font-bold">$150 discount</span><br />head to your inbox right now.
             </p>
-          </motion.div>
-
-          {/* Footer - Almost at the end of the section */}
-          <motion.div 
-            className="text-center absolute left-1/2 transform -translate-x-1/2"
-            style={{ bottom: '80px' }}
-            initial={{ opacity: 0, y: 60 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
-          >
+            
             {/* AYON Logo */}
             <motion.div 
               className="flex justify-center"
-              style={{ marginBottom: '15px' }}
+              style={{ marginBottom: '20px' }}
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
             >
               <Image
-                src="/Assets/ayonlogopngwhite.png"
+                src="/Assets/ayonlogopngblack.png"
                 alt="ayon"
                 width={135}
                 height={30}
@@ -105,12 +94,46 @@ export default function Thanks() {
               />
             </motion.div>
             
+            {/* Launching Soon Text */}
+            <motion.p
+              className="text-center"
+              style={{
+                fontFamily: 'var(--font-aeonik-mono)',
+                fontSize: '14px',
+                color: '#211F1F',
+                marginBottom: '10px'
+              }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
+            >
+              Launching soon on
+            </motion.p>
+            
+            {/* Kickstarter Logo */}
+            <motion.div 
+              className="flex justify-center"
+              style={{ marginBottom: '40px' }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.7, ease: "easeOut" }}
+            >
+              <Image
+                src="/Assets/kickstarterblack.svg"
+                alt="Kickstarter"
+                width={220}
+                height={29}
+                className="object-contain"
+              />
+            </motion.div>
+            
             {/* Copyright Text */}
             <motion.p
-              className="text-white text-center whitespace-nowrap"
+              className="text-center whitespace-nowrap"
               style={{
                 fontFamily: 'var(--font-aeonik)',
-                fontSize: '12px'
+                fontSize: '12px',
+                color: '#211F1F'
               }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
