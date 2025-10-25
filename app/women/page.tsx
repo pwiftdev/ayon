@@ -1,12 +1,27 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function WomenPage() {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState("");
+  const [showStickyButton, setShowStickyButton] = useState(false);
+
+  // Scroll detection for sticky button
+  useEffect(() => {
+    const handleScroll = () => {
+      const heroSection = document.querySelector('.hero-section');
+      if (heroSection) {
+        const heroBottom = heroSection.getBoundingClientRect().bottom;
+        setShowStickyButton(heroBottom < 0);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleEmailSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -205,7 +220,7 @@ export default function WomenPage() {
       </div>
 
       {/* Hero Section */}
-      <div className="relative w-full h-[700px] md:h-[769px]">
+      <div className="hero-section relative w-full h-[700px] md:h-[769px]">
         {/* Background Image - Full Viewport */}
         <div className="absolute inset-0 w-full h-full overflow-hidden">
           {/* Desktop Background */}
@@ -713,12 +728,12 @@ export default function WomenPage() {
           </div>
 
           {/* Email Input and Button */}
-          <form onSubmit={handleEmailSubmit} style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-            <div 
-              id="email-signup"
-              className="relative flex items-center px-6 md:px-0"
-              style={{ width: '450px', maxWidth: '450px' }}
-            >
+          <form onSubmit={handleEmailSubmit} className="w-full sm:px-6 md:px-8 lg:px-0">
+            <div className="flex justify-center">
+              <div 
+                id="email-signup"
+                className="relative flex items-center w-[90vw] sm:w-full sm:max-w-md md:max-w-lg lg:max-w-[450px]"
+              >
               {/* Email Input Field */}
               <input
                 type="email"
@@ -758,6 +773,7 @@ export default function WomenPage() {
               >
                 {isSubmitting ? 'SENDING...' : 'GET NOTIFIED'}
               </button>
+              </div>
             </div>
           </form>
           
@@ -1015,6 +1031,58 @@ export default function WomenPage() {
           </div>
         </div>
       </div>
+
+      {/* Sticky Notify Button */}
+      {showStickyButton && (
+        <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 w-[90vw] max-w-xs sm:max-w-sm">
+          <div className="w-full">
+          <button 
+            onClick={() => {
+              const emailSection = document.getElementById('email-signup');
+              if (emailSection) {
+                emailSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                // Multiple attempts to focus the input for better mobile support
+                const focusInput = () => {
+                  const emailInput = document.querySelector('#email-signup input[type="email"]') as HTMLInputElement;
+                  if (emailInput) {
+                    // Force focus and click for mobile devices
+                    emailInput.click();
+                    emailInput.focus();
+                    // Additional mobile-specific focus attempt
+                    emailInput.setSelectionRange(0, 0);
+                    return true;
+                  }
+                  return false;
+                };
+                
+                // Try immediate focus first
+                if (!focusInput()) {
+                  // If immediate focus fails, try with delays
+                  setTimeout(focusInput, 300);
+                  setTimeout(focusInput, 800);
+                  setTimeout(focusInput, 1200);
+                }
+              }
+            }}
+            className="font-medium capitalize tracking-wider transition-all duration-300 border border-black hover:scale-105 shadow-lg w-full"
+            style={{ 
+              height: '60px', 
+              borderRadius: '30px',
+              fontSize: '16px',
+              fontWeight: '500',
+              fontFamily: 'var(--font-aeonik)',
+              backgroundColor: '#2BDE73',
+              color: 'white',
+              border: 'none',
+              transition: 'all 0.3s ease'
+            }}
+          >
+            Notify Me At Launch
+          </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
