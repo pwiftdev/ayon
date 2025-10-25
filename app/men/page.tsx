@@ -59,7 +59,7 @@ export default function MenPage() {
   };
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#211F1F' }}>
+    <div className="min-h-screen overflow-x-hidden" style={{ backgroundColor: '#211F1F' }}>
       {/* Top Banner */}
       <div className="w-full py-3 md:py-3 h-[59.5px] md:h-[59.5px] sticky top-0 z-50" style={{ backgroundColor: '#211F1F' }}>
         <div className="flex items-center justify-center gap-2 h-full">
@@ -99,7 +99,7 @@ export default function MenPage() {
             color: '#211F1F',
             lineHeight: '1.5'
           }}>
-            <span className="font-bold">smart workout companion</span> from your home
+            <span className="font-bold">smart workout companion</span> for your home
           </p>
 
           {/* Transformation GIF with Overlapping Image */}
@@ -184,7 +184,7 @@ export default function MenPage() {
         }}
       >
         {/* Text Overlay in Gradient */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 top-1/2 -translate-y-1/2 z-20">
+        <div className="absolute left-1/2 transform -translate-x-1/2 top-1/2 -translate-y-1/2 z-20 px-4 max-w-md w-full">
           <p className="text-center mb-2" style={{ 
             fontFamily: 'var(--font-aeonik)', 
             fontSize: '34px', 
@@ -210,7 +210,7 @@ export default function MenPage() {
         <div className="absolute inset-0 w-full h-full overflow-hidden">
           {/* Desktop Background */}
           <Image
-            src="/Assets/landingpagenew/herosectionimagenew.png"
+            src="/Assets/landingpagenew/herosectionjpeg.jpg"
             alt="ayon hero"
             width={1200}
             height={769}
@@ -426,11 +426,11 @@ export default function MenPage() {
               />
             </div>
             {/* Content */}
-            <div className="absolute inset-0 flex flex-col justify-center items-center gap-1 px-4">
+            <div className="absolute inset-0 flex flex-col justify-center items-center gap-2 px-2">
               {/* First row */}
-              <div className="flex gap-3 justify-center">
+              <div className="flex gap-2 justify-center flex-wrap">
                 <div 
-                  className="px-4 py-2 rounded-full border"
+                  className="px-3 py-2 rounded-full border whitespace-nowrap text-xs sm:text-sm"
                   style={{
                     backgroundColor: 'white',
                     borderColor: '#211F1F',
@@ -443,7 +443,7 @@ export default function MenPage() {
                   Repetition accuracy
                 </div>
                 <div 
-                  className="px-4 py-2 rounded-full border"
+                  className="px-3 py-2 rounded-full border whitespace-nowrap text-xs sm:text-sm"
                   style={{
                     backgroundColor: 'white',
                     borderColor: '#211F1F',
@@ -455,12 +455,8 @@ export default function MenPage() {
                 >
                   Tempo and pacing
                 </div>
-              </div>
-              
-              {/* Second row */}
-              <div className="flex gap-3 justify-center">
                 <div 
-                  className="px-4 py-2 rounded-full border"
+                  className="px-3 py-2 rounded-full border whitespace-nowrap text-xs sm:text-sm"
                   style={{
                     backgroundColor: 'white',
                     borderColor: '#211F1F',
@@ -473,7 +469,7 @@ export default function MenPage() {
                   Fatigue markers
                 </div>
                 <div 
-                  className="px-4 py-2 rounded-full border"
+                  className="px-3 py-2 rounded-full border whitespace-nowrap text-xs sm:text-sm"
                   style={{
                     backgroundColor: 'white',
                     borderColor: '#211F1F',
@@ -486,7 +482,7 @@ export default function MenPage() {
                   Tension Times
                 </div>
                 <div 
-                  className="px-4 py-2 rounded-full border"
+                  className="px-3 py-2 rounded-full border whitespace-nowrap text-xs sm:text-sm"
                   style={{
                     backgroundColor: 'white',
                     borderColor: '#211F1F',
@@ -525,7 +521,7 @@ export default function MenPage() {
             </h1>
 
             {/* Bottom Text Block */}
-            <div className="text-center max-w-sm">
+            <div className="text-center max-w-lg">
               <p
                 style={{
                   fontFamily: 'var(--font-aeonik)',
@@ -720,7 +716,7 @@ export default function MenPage() {
           <form onSubmit={handleEmailSubmit} style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
             <div 
               id="email-signup"
-              className="relative flex items-center"
+              className="relative flex items-center px-6 md:px-0"
               style={{ width: '450px', maxWidth: '450px' }}
             >
               {/* Email Input Field */}
@@ -993,7 +989,7 @@ export default function MenPage() {
                 fontSize: '16px' 
               }}
             >
-              Launch soon on
+              Launching soon on
             </span>
             <Image
               src="/Assets/landingpagenew/kickstarterlogogreen.png"
